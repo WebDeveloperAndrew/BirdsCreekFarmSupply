@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+      proxy:
+        image: jwilder/nginx-proxy
+        container_name: nginx-proxy
+        ports:
+          - "80:80"
+          - "443:443"
+        volumes:
+          - certs:/etc/nginx/certs:ro
+          - vhost:/etc/nginx/vhost.d
+          - html:/usr/share/nginx/html
+          - /var/run/docker.sock:/tmp/docker.sock:ro
+        labels: 
+          com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: jwilder/nginx-proxy
+      ssl:
+        image: jrcs/letsencrypt-nginx-proxy-companion
+        container_name: ssl-nginx
+        volumes:
+          - certs:/etc/nginx/certs:rw
+          - vhost:/etc/nginx/vhost.d
+          - html:/usr/share/nginx/html
+          - /var/run/docker.sock:/var/run/docker.sock:ro
+        environment:
+          - NGINX_PROXY_CONTAINER=nginx-proxy
+      website:
+        image: webdeveloperandrew/birdscreekdev
+        container_name: website
+        ports: 
+          - "8000:80"
+        environment:
+          - VIRTUAL_HOST=birdscreekfarmsupply.ca,www.birdscreekfarmsupply.ca,birdscreekfarmsupply.com,www.birdscreekfarmsupply.com
+          - LETSENCRYPT_HOST=birdscreekfarmsupply.ca,www.birdscreekfarmsupply.ca,birdscreekfarmsupply.com,www.birdscreekfarmsupply.com
+          - LETSENCRYPT_EMAIL=webdeveloperandrew@gmail.com
+
+volumes:
+  certs:
+  vhost:
+  html:
