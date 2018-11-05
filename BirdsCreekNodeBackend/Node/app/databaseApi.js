@@ -6,7 +6,8 @@ var dburl = process.env.MONGO_URI;
 mongoose.connect(dburl);
 
 var productSchema = new Schema({
-    name: {type:String , required : true},
+    title: {type:String , required : true},
+    subtitle: {type:String , required : true},
     image: {type:String , required : true},
     description: {type:String, required : true},
     info: { type:String, required: false },
@@ -41,7 +42,8 @@ function createProduct(req, res)
       res.send("Could Not Parse JSON data")
     }
     var prod = new product();
-    prod.name = store.name;
+    prod.title = store.title;
+    prod.subtitle = store.subtitle;
     prod.image = store.image;
     prod.description = store.description;
     prod.info = store.info;
@@ -80,31 +82,35 @@ function updateProduct(req, res)
       console.error("Could Not Parse JSON data");
       res.send("Could Not Parse JSON data")
     }
-    var updates;
+    var updates = {};
 
-    if(store.name)
+    if(store.title)
     {
-      updates.push("name", store.name);
+      updates.title = store.title;
+    }
+    if(store.subtitle)
+    {
+      updates.subtitle = store.subtitle;
     }
     if(store.image)
     {
-      updates.push("image", store.image);
+      updates.image = store.image;
     }
     if(store.description)
     {
-      updates.push("description", store.description);
+      updates.description = store.description;
     }
     if(store.info)
     {
-      updates.push("info", store.info);
+      updates.info = store.info;
     }
     if(store.price)
     {
-      updates.push("price", store.price);
+      updates.price = store.price;
     }
     if(store.brand)
     {
-      updates.push("brand", store.brand);
+      updates.brand = store.brand;
     }
 
 
@@ -117,7 +123,7 @@ function updateProduct(req, res)
       else
       {
         console.log("Success: Product data updated");
-        res.send({"Success":"Product data updated", "Data": prod });
+        res.send({"Success":"Product data updated", "Data": updates });
       }
 
     });
@@ -140,7 +146,8 @@ function getProduct(req, res)
         console.log(result);
         if(result){
           var productx = {};
-          productx.name = result.name;
+          productx.title = result.title;
+          productx.subtitle = result.subtitle;
           productx.image = result.image;
           productx.description = result.description;
           productx.info = result.info;
@@ -169,7 +176,7 @@ function getProduct(req, res)
       store = JSON.parse(store);
       query = new RegExp(store.query, "i");
       console.log(store);
-      product.find({$or:[{'name':query},{'image':query},{'description':query},{'info':query},{'brand':query}]}, function(err, result){
+      product.find({$or:[{'title':query},{'subtitle':query},{'image':query},{'description':query},{'info':query},{'brand':query}]}, function(err, result){
         if(err){ 
           console.error('search error')
           console.error(err);
