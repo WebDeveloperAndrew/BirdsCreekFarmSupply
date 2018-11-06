@@ -1,0 +1,52 @@
+@import "./src/sass/variables";
+.container-fluid
+{
+    font-family: round, sans-serif;
+    margin-top:50px;
+}
+.title{
+    margin-bottom:30px;
+}
+h1{
+    margin-top:35px;
+}
+h3{
+    margin-top:10px;
+}
+button{
+    margin-bottom: 30px;
+}
+
+p{
+    font-weight:600;
+}
+
+.calltoaction{
+    color: $secondaryText;
+    background-color: $secondaryBackground;
+    border: 1px solid;
+    border-color: $primaryAccent;
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    -webkit-box-shadow: inset 0px 0px 86px -7px $secondaryBorder;
+    -moz-box-shadow: inset 0px 0px 86px -7px $secondaryBorder;
+    box-shadow: inset 0px 0px 86px -7px $secondaryBorder;
+}
+.btn-calltoaction{
+    margin-top: 10px;
+    background-color: transparent;
+    font-size:20px;
+    font-weight:bold;
+    border-color: $secondaryText;
+    border-width: 3px;
+    color: $secondaryText;
+    -webkit-transition: padding 1s,  border-color 1s, background-color 1s; /* Safari */
+    transition: padding 1s,  border-color 1s, background-color 1s;
+}
+.btn-calltoaction:hover{
+    padding: 6px 24px 6px 24px;
+    border-color: transparent;
+    background-color: $secondaryAccent;
+}

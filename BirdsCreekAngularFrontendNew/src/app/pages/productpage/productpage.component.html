@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-lg-4 text-right">
+        <img src="../../../assets/img/{{productData.img}}" width="100%">
+    </div>
+    <div class="col-lg-4 text-left">
+      <h1>{{productData.title}}</h1>
+      <h2>{{productData.subtitle}}</h2>
+      <p>{{productData.description}}</p>
+      <div class="row">
+        <div class="col-sm-3">
+        <a href="{{productData.brand}}" target="blank"><img src="{{productData.logo}}"></a>
+        </div>
+        <div class="col-sm-9">
+          <h4>Additional Information</h4>
+          <p [innerHTML]='productData.info'></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+  
+  <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 calltoaction text-center"><h2>Contact us to make an order</h2><a routerLink="../../contact" routerLinkActive="active"><div class="btn btn-calltoaction">Contact Us</div></a></div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>

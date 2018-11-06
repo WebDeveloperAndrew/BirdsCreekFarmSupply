@@ -1,0 +1,32 @@
+<div class="container-fluid largescreen carouselColor">
+  <div class="row carousel">
+    <div class = "col-md-2"></div>
+    <div class = "col-md-4"><img class="slideimg" src="{{slide.imageSource}}"></div>
+    <div class = "col-md-4 text-center"><h1 class="slidecontent">{{slide.slideTitle}}</h1><p>{{slide.slideText}}<p><a routerLink='../{{slide.link}}' routerLinkActive="active"><button class="btn btn-calltoaction buttonlink">{{slide.buttonText}}</button></a></div>
+    <div class = "col-md-2"></div>
+  </div>  
+  <div class="row carousel">
+    <div class ="col-md-12 text-center carouselnav">
+      <ul>
+        <li *ngFor="let slid of slides">
+          <fa-icon [icon]="Circle" class="icon" [ngClass]="(slid.id==slide.id)? 'selected' : ''" (click)="moveSlide(slid.id)"></fa-icon>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container-fluid smallscreen carouselColor">
+  <div class="carousel">
+    <img class="slideimg" src="{{slide.imageSource}}">
+    <h1 class="slidecontent">{{slide.slideTitle}}</h1><p>{{slide.slideText}}<p><a routerLink='../{{slide.link}}' routerLinkActive="active"><button class="btn btn-calltoaction buttonlink">{{slide.buttonText}}</button></a>
+  </div>  
+  <div class="row carousel">
+    <div class ="col-md-12 text-center carouselnav">
+      <ul>
+        <li *ngFor="let slid of slides">
+          <fa-icon [icon]="Circle" class="icon" [ngClass]="(slid.id==slide.id)? 'selected' : ''" (click)="moveSlide(slid.id)"></fa-icon>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

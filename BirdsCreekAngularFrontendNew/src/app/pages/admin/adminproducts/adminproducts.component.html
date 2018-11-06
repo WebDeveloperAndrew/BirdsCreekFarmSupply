@@ -1,0 +1,19 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12 text-center"><h1>Products</h1></div>
+  </div>
+  <div class="row searchArea">
+    <div class="col-sm-4 text-center"> <a routerLink="../../admin/addproduct" routerLinkActive="active"><button id="addproduct" class="btn btn-calltoaction buttonlink" (click)= runSearch()>Add Product</button></a></div>
+    <div class="col-sm-4 text-center">
+      <input class="search-input" [(ngModel)]="searchParam">
+      <button class="btn btn-calltoaction buttonlink" (click)= runSearch()>Search</button>
+    
+    </div>
+    <div class="col-sm-4 text-center"><h2>Click on any product to edit it</h2></div>
+    <div class="col-sm-3" *ngFor="let product of displayData;">
+    <a routerLink="../../admin/editproduct/:{{product._id}}" routerLinkActive="active"><app-searchresult title="{{product.title}}" subtitle="{{product.subtitle}}" brand="{{product.brand}}" info="{{product.info}}" image="{{product.image}}" logo="{{product.logo}}" description="{{product.description}}"></app-searchresult></a>
+    </div>
+    
+  </div>
+</div>

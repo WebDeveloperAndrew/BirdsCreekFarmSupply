@@ -1,0 +1,7 @@
+<div class="pageContent">
+  <app-adminmainmenu *ngIf="admin"></app-adminmainmenu>
+  <app-mainmenu *ngIf="!admin"></app-mainmenu>
+  <router-outlet></router-outlet>
+</div>
+<app-adminfooter *ngIf="admin"></app-adminfooter>
+<app-footer *ngIf="!admin"></app-footer>

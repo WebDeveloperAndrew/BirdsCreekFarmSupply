@@ -1,0 +1,16 @@
+@import "./src/sass/variables";
+
+.container{
+    margin-top:20px;
+    font-family: round, sans-serif;
+}
+p{
+    font-weight:600;
+    margin-top:10px;
+}
+img{
+    border-radius:15px;
+    border-color: $primaryAccent;
+    border: 2px solid;
+    color: $primaryAccent;
+}

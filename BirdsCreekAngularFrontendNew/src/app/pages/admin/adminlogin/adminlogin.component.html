@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-12 text-center"><h1>Admin Login</h1></div>
+      <div class="col-md-12 text-center"><a routerLink="../../home">If you are not an admin click here to be redirected</a></div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 loginbox"> 
+      <div class="row">
+        <div class="col-md-12 text-center">
+
+            <div class="alert alert-info" *ngIf="loginsuccessful">Logged in</div>
+            
+            <div class="alert alert-danger" *ngIf="loginerror  || passworderror || loginfailed || passwordlengtherror || loginunsuccessful">
+              <p class="errormessage" *ngIf="loginerror">A Login is required</p>
+              <p class="errormessage" *ngIf="passworderror">A Password is required</p>
+              <p class="errormessage" *ngIf=" (passwordlengtherror && !passworderror)">A Password must be at least 8 characters long</p>
+              <p class="errormessage" *ngIf="loginfailed">There was an error with the login service, please contact Andrew</p>
+              <p class="errormessage" *ngIf="loginunsuccessful">The login information was incorrect, please try again</p>
+            </div>
+
+
+           <form #login="ngForm" (ngSubmit)="onSubmit(login)">
+            <div class="form-group">
+                <label for="loginInput">Login</label>
+                <input required ngModel name="login" #name="ngModel" [ngClass]="{'forminvalid': loginerror}" id="login" type="text" class="form-control" id="loginInput" placeholder="Login">
+              </div>
+            <div class="form-group">
+              <label for="passwordInput">Password</label>
+              <input required ngModel name="password" #email="ngModel" [ngClass]="{'forminvalid': (passworderror || passwordlengtherror)}" id="password" type="password" class="form-control" id="passwordInput" placeholder="Password">
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-calltoaction">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>

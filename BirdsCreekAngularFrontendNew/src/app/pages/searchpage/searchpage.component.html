@@ -1,0 +1,20 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12 text-center"><h1>Products</h1></div>
+  </div>
+  <div class="row searchArea">
+    <div class="col-sm-2 text-center"><img class="prodimg" src="{{pets}}"><h3>Pet Food & Supplies</h3></div>
+    <div class="col-sm-2 text-center"><img class="prodimg" src="{{farm}}"><h3>Farm Supplies</h3></div>
+    <div class="col-sm-4 text-center">
+      <input class="search-input" [(ngModel)]="searchParam">
+      <button class="btn btn-calltoaction buttonlink" (click)= runSearch()>Search</button>
+    </div>
+    <div class="col-sm-2 text-center"><img class="prodimg" src="{{construction}}"><h3>Safety & Work Wear</h3></div>
+    <div class="col-sm-2 text-center"><img class="prodimg" src="{{garden}}" ><h3>Lawn & Garden</h3></div>
+    <div [hidden]="content" class="col-md-12 text-center"><h3>We are sorry, no products match your search.</h3></div>
+    <div class="col-sm-3" *ngFor="let product of displayData;">
+      <a routerLink="product/{{product._id}}" routerLinkActive="active"><app-searchresult title="{{product.title}}" subtitle="{{product.subtitle}}" brand="{{product.brand}}" info="{{product.info}}" image="{{product.image}}" logo="{{product.logo}}" description="{{product.description}}"></app-searchresult></a>
+    </div>
+  </div>
+</div>

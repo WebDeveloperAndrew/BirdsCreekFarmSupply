@@ -1,0 +1,32 @@
+<div id="headerElement">
+    <div class="headerp">
+      <div class="container-fluid largescreen">
+        <nav>
+          <ul>
+            <li class="left"><a routerLink="admin/home" routerLinkActive="active">Control Panel</a></li>
+            <li><a routerLink="admin/products" routerLinkActive="active">Products</a></li>
+            <li class="center"><img alt="Birds Creek Farm Supply Logo" src="{{logo}}"></li>
+            <li><a routerLink="admin/brands" routerLinkActive="active">Brands</a></li>
+            <li id="right"><a routerLink="admin/promotions" routerLinkActive="active">Promotions</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="container-fluid smallscreen">
+        <div class="hamburger" (click)="menuToggle = !menuToggle">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid smallscreen">
+      <nav [ngClass]="{show: menuToggle, hide: !menuToggle}">
+          <ul>
+            <a routerLink="home" routerLinkActive="active"><li>Farm Supply Home</li></a>
+            <a routerLink="products" routerLinkActive="active"><li>Our Products</li></a>
+            <a routerLink="about" routerLinkActive="active"><li>About Us</li></a>
+            <a routerLink="contact" routerLinkActive="active"><li>Contact Us</li></a>
+          </ul>
+        </nav>
+    </div>
+  </div>

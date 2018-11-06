@@ -1,0 +1,91 @@
+@import "./src/sass/variables";
+.container{
+    padding-top:30px;
+    padding-bottom:30px;
+}
+
+h1{
+    margin-bottom:20px;
+}
+.searchArea{
+    
+    border: 2px $carouselAccent solid;
+    background-color:$carouselBackground;
+    border-radius: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.prodimg{
+    width: 9vw;
+    height: 6vw; 
+    border-radius: 15px;
+    margin-bottom: 10px;
+    border-color: $carouselBorder;
+    border: 2px solid;
+    color: $carouselBorder;
+}
+p{ 
+    font-weight:600;
+}
+h3{
+    font-family: round, sans-serif;
+    font-weight:500;
+    font-size: 1.2vw;
+    color:$carouselText;
+    text-shadow: 2px 2px 20px $carouselBorder;
+    
+}
+@media only screen and (max-width: $large-display) {
+    .prodimg{
+        width: 12vw;
+        height: 8vw;
+    }
+}
+@media only screen and (max-width: $medium-display) {
+    .prodimg{
+        width: 10.2vw;
+        height: 6.8vw;
+    }
+    p{
+        font-size: 20px;
+    }
+}
+.search-input{
+    margin-top: 20px;
+    background-color:$carouselBackground;
+    border-color:$carouselAccent;
+    width: 80%;
+    color:$carouselText;
+    text-align: center;
+}
+.search-input:focus{
+    outline:none;
+}
+.buttonlink{
+    background:transparent;
+    border-color: $carouselText;
+    font-size: 1.5vw;
+    padding-left:1vw;
+    padding-right:1vw;
+    border-radius: 5px;
+    border-width: 2px;
+    color: $carouselText;
+    text-shadow: 2px 2px 20px $carouselBorder;
+    box-shadow: 2px 2px 20px $carouselBorder;
+}
+.btn-calltoaction{
+    margin-top: 10px;
+    background-color: transparent;
+    border-color: $carouselText;
+    border-width: 3px;
+    color: $carouselText;
+    -webkit-transition: padding 1s,  border-color 1s, background-color 1s; /* Safari */
+    transition: padding 1s,  border-color 1s, background-color 1s;
+}
+.btn-calltoaction:hover{
+    padding: 6px 44px 6px 44px;
+    border-color: transparent;
+    background-color: $carouselAccent;
+}

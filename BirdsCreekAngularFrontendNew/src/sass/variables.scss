@@ -1,0 +1,33 @@
+$large-display: 1199px;
+$medium-display: 991px;
+$small-display: 767px;
+$mobile-display: 415px;
+
+$carouselText: #b77f3e;
+$carouselAccent: #683c0a;
+$carouselBackground:#442c10;
+$carouselBorder: black;
+
+$primaryBackground:#8c6a41;
+$primaryText:black;
+$primaryAccent:#442c10;
+$primaryHyperlink:#442c10;
+$primaryBorder:black;
+
+$secondaryBackground:#7C8B5A;
+$secondaryText:#6e2306;
+$secondaryAccent:#fec77c;
+$secondaryBorder:black;
+
+.smallscreen{
+    display: none;
+}
+@media only screen and (max-width: $small-display) {
+    .largescreen{
+        display: none;
+    }
+
+    .smallscreen{
+        display: block;
+    }
+}

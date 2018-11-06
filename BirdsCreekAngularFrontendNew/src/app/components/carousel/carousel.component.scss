@@ -1,0 +1,145 @@
+@import "./src/sass/variables";
+
+.carouselColor{
+    background-color: $carouselBackground;
+}
+.carousel{
+    font-family: round, sans-serif;
+    padding-bottom:0px;
+    color: $carouselText;
+}
+h1,p{
+    text-shadow: 2px 2px 20px $carouselBorder;
+}
+
+li{
+    list-style-type: none;
+    padding: 0;
+    margin:0;
+    display:inline;
+}
+ul{
+    padding:0;
+    margin:0;
+}
+.icon{
+    padding: 2px;
+    color: $carouselAccent;
+}
+img{
+    width:100%;
+    border-radius:15px;
+    border: 2px solid;
+    border-color:$carouselText;
+    -webkit-box-shadow: 0px 0px 86px -7px $carouselBorder;
+    -moz-box-shadow: 0px 0px 86px -7px $carouselBorder;
+    box-shadow: 0px 0px 86px -7px $carouselBorder;
+}
+
+.selected{
+    color:$carouselText;
+}
+.buttonlink{
+    background:transparent;
+    border-color: $carouselText;
+    font-size: 1.5vw;
+    padding-left:1vw;
+    padding-right:1vw;
+    border-radius: 5px;
+    border-width: 2px;
+    color: $carouselText;
+    text-shadow: 2px 2px 20px $carouselBorder;
+    box-shadow: 2px 2px 20px $carouselBorder;
+}
+.btn-calltoaction{
+    margin-top: 10px;
+    background-color: transparent;
+    border-color: $carouselText;
+    border-width: 3px;
+    color: $carouselText;
+    -webkit-transition: padding 1s,  border-color 1s, background-color 1s; /* Safari */
+    transition: padding 1s,  border-color 1s, background-color 1s;
+}
+.btn-calltoaction:hover{
+    padding: 6px 44px 6px 44px;
+    border-color: transparent;
+    background-color: $carouselAccent;
+}
+
+.largescreen{
+
+    .carousel{
+        padding-top: 5.2vw;
+    }
+
+    .slideimg{
+        width:30vw;
+        height:20vw;
+    }
+    .carouselnav{
+        padding-bottom: 10px;
+    }
+
+    h1{
+        font-size: 2.65vw;
+    }
+    p{
+        font-size: 1.5vw;
+        padding-bottom: 10px;
+    }
+    .slidecontent{
+        padding-top:2vw;
+    }
+
+
+    @media only screen and (max-width: $medium-display) {
+        h1{
+            font-size: 2.65vw;
+        }
+        p{
+            font-size: 1.9vw;
+        }
+        .buttonlink{
+            font-size: 2vw;
+        }
+        .slideimg{
+            margin-top: calc(20px - 2vw);
+            width:30vw;
+            height:20vw; 
+        }
+    }
+}
+
+.smallscreen
+{
+    p{
+        font-size: 20px;
+    }
+    margin:0px;
+    padding:0px;
+    .carousel{
+        text-align:center;
+        margin:0px;
+    }
+    .carouselnav{
+        padding:0px;
+    }
+    .slideimg{
+        width:100%;
+        height:calc(width*3/2);
+        margin-bottom:10px;
+    }
+    .buttonlink{
+        font-size: 26px;
+        margin-top:10px;
+        width:80%;
+        height:60px;
+        margin-bottom:20px;
+    }
+    ul{
+        padding-bottom: 10px;
+    }
+    p{
+        margin-bottom:0px;
+    }
+}
