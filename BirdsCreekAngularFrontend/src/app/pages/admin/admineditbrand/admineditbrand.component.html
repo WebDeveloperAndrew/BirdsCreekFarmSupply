@@ -1,3 +1,49 @@
-<p>
-  admineditbrand works!
-</p>
+<div class="container">
+  <div class="row">
+      <div class="col-md-12 text-center"><h1>Add Brand</h1></div>
+  </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info" *ngIf="uploading">Your image is uploading.</div>
+            <div class="alert alert-success" *ngIf="uploaded">Your image was successfully uploaded.</div>
+            <div class="alert alert-danger" *ngIf="(name.touched && !name.valid) || (link.touched && !link.valid) || (description.touched && !description.valid) || websiteerror  || nameerror || descriptionerror || imageerror"><p class="errormessage" *ngIf="(name.touched && !name.valid) || nameerror">A Name is required</p><p class="errormessage" *ngIf="(link.touched && !link.valid) || websiteerror">A Website link is required</p><p class="errormessage" *ngIf="(description.touched && !description.valid) || descriptionerror">A Description is required</p><p class="errormessage" *ngIf="imageerror">An image must be uploaded before you can submit</p></div>
+              <form #contact="ngForm" (ngSubmit)="onSubmit(contact)">
+                <div class = "row">
+                  <div class="col-sm-4">
+                    <div class="image-select">
+                      <label class="inputfilelabel" for="fileupload"><img [ngClass]="{'forminvalid': imageerror}" id="fileuploadimage" src="{{imageupload}}" alt="your image"></label>
+                      <input id="fileupload" name="image" type="file" accept="image/*" (change)="imageUpload($event)">
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="nameField">Name</label>
+                        <input required ngModel name="name" #name="ngModel" [ngClass]="{'forminvalid': nameerror}" id="name" type="text" class="form-control" id="nameField" placeholder="Name">
+                      </div>
+                    <div class="form-group">
+                      <label for="linkField">Website Link</label>
+                      <input required ngModel name="link" #link="ngModel" [ngClass]="{'forminvalid': websiteerror}" id="link" type="text" class="form-control" id="linkField" placeholder="Website Link">
+                    </div>
+                    <div class="form-group">
+                      <label for="descriptionField">Description</label>
+                      <textarea required ngModel name="description" #description="ngModel" [ngClass]="{'forminvalid': descriptionerror}" id="description" class="form-control" id="descriptionField" placeholder="Description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="infoField">Additional Information</label>
+                      <textarea required ngModel name="info" #info="ngModel" [ngClass]="{'forminvalid': infoerror}" id="info" class="form-control" id="infoeField" placeholder="Additional Information" rows="3"></textarea>
+                    </div>
+                    <div class="form-group text-center">
+                      <button type="submit" class="btn btn-calltoaction">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

@@ -3,7 +3,9 @@ var express = require('express');
 var app = express();
 var mongo = require('mongodb');
 var databaseApi = require('./app/databaseApi.js');
+var imageServer = require('./app/imageServer.js');
 var dburl = process.env.MONGO_URI;
+
 
 mongo.MongoClient.connect(dburl, function(err, db) {
 
@@ -21,6 +23,7 @@ mongo.MongoClient.connect(dburl, function(err, db) {
       });
 
       databaseApi(app);
+      imageServer(app, express, db);
       
       var port = process.env.PORT || 8080;
       app.listen(port, function() {

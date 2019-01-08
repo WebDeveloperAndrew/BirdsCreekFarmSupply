@@ -172,6 +172,7 @@ function createBrand(req, res)
       if(error)
       {
         console.error('Error saving data');
+        console.log(error);
         res.send(error);
       }
       else
