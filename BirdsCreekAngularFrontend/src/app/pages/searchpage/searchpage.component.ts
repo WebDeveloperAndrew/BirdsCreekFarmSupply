@@ -62,6 +62,7 @@ export class SearchpageComponent implements OnInit {
   convertToData(res)
   {
     var data = [];
+    console.log(res.length);
     if(res.length==0)
     {
       this.content=false;

@@ -16,6 +16,9 @@ mongo.MongoClient.connect(dburl, function(err, db) {
       dbase.createCollection("products", {
         capped: false
       });
+      dbase.createCollection("brands", {
+        capped: false
+      });
 
       databaseApi(app);
       

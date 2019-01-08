@@ -13,6 +13,7 @@ import { AdminhomeComponent } from './pages/admin/adminhome/adminhome.component'
 import { AdminproductsComponent } from './pages/admin/adminproducts/adminproducts.component';
 import { AdminbrandsComponent } from './pages/admin/adminbrands/adminbrands.component';
 import { AdminpromotionsComponent } from './pages/admin/adminpromotions/adminpromotions.component';
+import { AdminaddbrandComponent } from './pages/admin/adminaddbrand/adminaddbrand.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,7 +23,7 @@ const appRoutes: Routes = [
     { path: 'products', component: ProductspageComponent},
     { path: 'chicks', component: ChickspageComponent},
     { path: 'search', component: SearchpageComponent},
-    { path: 'product/:productname', component: ProductpageComponent},
+    { path: 'product/:productid', component: ProductpageComponent},
     { path: 'about-us', redirectTo: '/about', pathMatch: 'full'},
     { path: 'testimonials', redirectTo: '/about', pathMatch: 'full'},
     { path: 'farm-supplies/#', redirectTo: '/products', pathMatch: 'full'},
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
     { path: 'admin/home', component: AdminhomeComponent },
     { path: 'admin/products', component: AdminproductsComponent },
     { path: 'admin/brands', component: AdminbrandsComponent },
+    { path: 'admin/addbrand', component: AdminaddbrandComponent },
     { path: 'admin/promotions', component: AdminpromotionsComponent },
     { path: 'admin/editproduct', component: AdminpromotionsComponent },
     /*

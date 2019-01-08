@@ -14,7 +14,7 @@ export class AdminloginComponent implements OnInit {
   loginerror=false;
   passworderror=false;
   passwordlengtherror=false;
-  loginServer;
+  loginServer = "http://localhost:4000/api/";
 
   constructor(private http: HttpClient) { }
 
@@ -38,7 +38,7 @@ export class AdminloginComponent implements OnInit {
       this.loginerror=false;
       this.passworderror=false;
       this.passwordlengtherror=false;
-      const req = this.http.post(this.loginServer, JSON.stringify({"login": login.value.login, "password": login.value.password}), httpOptions)
+      this.http.post(this.loginServer+"login", JSON.stringify({"login": login.value.login, "password": login.value.password}), httpOptions)
       .subscribe(
         res => {
           console.log(res);

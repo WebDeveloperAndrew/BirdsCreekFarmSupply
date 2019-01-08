@@ -14,7 +14,17 @@ var productSchema = new Schema({
     price: { type:Number, required: false },
     brand: {type:String, default: 'none'}
   }, { collection: 'products' });
-  
+
+  var brandSchema = new Schema({
+    name: { type:String , required : true, unique: true},
+    description: { type:String , required : true},
+    image: { type:String , required : true},
+    info: { type:String, required: false },
+    link: { type:String, required: true }
+  }, { collection: 'brands' });
+
+
+var brand = mongoose.model('brand', brandSchema);
 var product = mongoose.model('product', productSchema);
 
 app.post('/api/createproduct', createProduct);
@@ -23,6 +33,9 @@ app.post('/api/updateproduct', updateProduct);
 app.post('/api/searchproduct', searchProduct);
 app.post('/api/deletedatabase', deleteDatabase);
 app.post('/api/deleteproduct', deleteProduct);
+app.post('/api/getbrand', getBrand);
+app.post('/api/createbrand', createBrand);
+app.post('/api/updatebrand', updateBrand);
 
 function createProduct(req, res)
 {
@@ -129,6 +142,141 @@ function updateProduct(req, res)
     });
   });
 }
+
+function createBrand(req, res)
+{
+  console.log("branding");
+  var store = '';
+  req.on('data', function(data) 
+  {
+      store += data;
+  });
+  req.on('end', function(){
+    try {
+     store = JSON.parse(store);
+    }
+    catch(e)
+    {
+      console.log(e);
+      console.error("Could Not Parse JSON data");
+      res.send("Could Not Parse JSON data")
+    }
+    var bran = new brand();
+    bran.name = store.name;
+    bran.image = store.image;
+    bran.description = store.description;
+    bran.info = store.info;
+    bran.link = store.link;
+
+    bran.save(function(error) {
+      if(error)
+      {
+        console.error('Error saving data');
+        res.send(error);
+      }
+      else
+      {
+        console.log("Success: Brand data created");
+        res.send({"Success":"Brand data created"});
+      }
+    });
+  });
+}
+
+function updateBrand(req, res)
+{
+  var store = '';
+  req.on('data', function(data) 
+  {
+      store += data;
+  });
+  req.on('end', function(){
+    try {
+     store = JSON.parse(store);
+    }
+    catch(e)
+    {
+      console.log(e);
+      console.error("Could Not Parse JSON data");
+      res.send("Could Not Parse JSON data")
+    }
+    var updates = {};
+    
+    if(store.name)
+    {
+      updates.name = store.name;
+    }
+    if(store.image)
+    {
+      updates.image = store.image;
+    }
+    if(store.description)
+    {
+      updates.description = store.description;
+    }
+    if(store.info)
+    {
+      updates.info = store.info;
+    }
+    if(store.link)
+    {
+      updates.link = store.link;
+    }
+
+    brand.findByIdAndUpdate(store.id, {$set: updates}, function (error, bran) {
+      if(error)
+      {
+        console.error('Error updating data');
+        res.send(error);
+      }
+      else
+      {
+        console.log("Success: Brand data updated");
+        res.send({"Success":"Brand data updated", "Data": updates });
+      }
+
+    });
+  });
+}
+
+
+function getBrand(req, res) //Version 1 without ID
+  {
+    var store = '';
+    req.on('data', function(data) 
+    {
+        store += data;
+    });
+    req.on('end', function() 
+    {
+      var search;
+      store = JSON.parse(store);
+      if (store.name)
+      {
+        search = store.name;
+      }
+      brand.find({"name":search}, function(err, result){
+        if(err) console.log(err);
+        console.log(result);
+        if(result){
+          var brandx = {};
+          brandx.name = result[0].name;
+          brandx.image = result[0].image;
+          brandx.description = result[0].description;
+          brandx.info = result[0].info;
+          brandx.link = result[0].link;
+          console.log(brandx);
+          res.send(brandx);
+        }
+        else
+        {
+          console.error("Error: The id was not found");
+          res.send({"Error": "The id was not found"});
+        }
+      });
+    });
+  }
+
 
 function getProduct(req, res)
   {

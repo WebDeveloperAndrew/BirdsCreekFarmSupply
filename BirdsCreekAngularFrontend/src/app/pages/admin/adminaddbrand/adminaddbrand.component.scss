@@ -1,0 +1,117 @@
+@import "./src/sass/variables";
+
+.container{
+    font-family: round, sans-serif;
+    padding-top:50px;
+    font-weight:600;
+}
+h1{
+    margin-bottom:20px;
+}
+
+.btn-calltoaction{
+    margin-top: 10px;
+    background-color: transparent;
+    border-color: $primaryAccent;
+    border-width: 3px;
+    font-weight:bold;
+    color: $primaryAccent;
+    -webkit-transition: padding 1s,  border-color 1s, background-color 1s; /* Safari */
+    transition: padding 1s,  border-color 1s, background-color 1s;
+}
+.btn-calltoaction:hover{
+    padding: 6px 34px 6px 34px;
+    border-color: transparent;
+    background-color: $carouselText;
+}
+
+.btn-calltoaction:active {
+    outline:none;
+    box-shadow: none;
+}
+.btn-calltoaction:focus {
+    outline:none;
+    box-shadow: none;
+}
+
+input, textarea{
+    background-color: $primaryBackground;
+    border-color: $primaryText;
+    font-weight:600;
+}
+.alert-info{
+    background-color:#467782;
+    border-color:#467782;
+    color: lightgrey;
+}
+
+input::placeholder,textarea::placeholder 
+{ /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $primaryAccent;
+    opacity: 1; /* Firefox */
+}
+
+input::-ms-input-placeholder,textarea::-ms-input-placeholder 
+{ /* Internet Explorer 10-11 */
+    color: $primaryAccent;
+}
+textarea:focus, input:focus {
+    color: #000;
+    background-color:$primaryBackground;
+    border-color: $primaryAccent;
+    box-shadow:none;
+}
+input, select, textarea{
+    color: #000;
+}
+
+iframe{
+    margin-top: 20px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+.errormessage{
+    margin-bottom:0px;
+}
+.form-control.ng-touched.ng-invalid {
+    border: 2px solid #7F0000;
+}
+.forminvalid {
+    border: 2px solid #7F0000;
+}
+.warning{
+    color:sienna;
+}
+.alert-danger
+{
+    background-color:#7F0000;
+    border-color: #7F0000;
+    color: lightgrey;
+}
+
+@media only screen and (max-width: $small-display) {
+    .alert{
+        text-align: center;
+    }
+    button{
+        margin-right:auto;
+        margin-left:auto;
+        width: 60%;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    form{
+        text-align: center;
+        font-size:20px;
+    }
+    h3{
+        text-align: center;
+    }
+    p{
+        text-align: center;
+    }
+    iframe{
+        width:100%;
+        height:calc(width*1.5);
+    }
+}

@@ -1,3 +1,41 @@
-<p>
-  adminaddbrand works!
-</p>
+<div class="container">
+  <div class="row">
+      <div class="col-md-12 text-center"><h1>Add Brand</h1></div>
+  </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info" *ngIf="mailsent">Your message has been successfully sent.</div>
+            <div class="alert alert-danger" *ngIf="(name.touched && !name.valid) || (email.touched && !email.valid) || (message.touched && !message.valid) || emailerror  || nameerror || mailfail || messageerror"><p class="errormessage" *ngIf="(name.touched && !name.valid) || nameerror">A Name is required</p><p class="errormessage" *ngIf="(email.touched && !email.valid) || emailerror">An Email is required</p><p class="errormessage" *ngIf="emailerror && message.valid">Your Email is not valid</p><p class="errormessage" *ngIf="(message.touched && !message.valid) || messageerror">A Message is required</p><p class="errormessage" *ngIf="mailfail">We are sorry, the mailing service is down right now, please try again later</p></div>
+            <form #contact="ngForm" (ngSubmit)="onSubmit(contact)">
+                <div class="form-group">
+                    <label for="nameField">Name</label>
+                    <input required ngModel name="name" #name="ngModel" [ngClass]="{'forminvalid': nameerror}" id="name" type="text" class="form-control" id="nameField" placeholder="Name">
+                  </div>
+                <div class="form-group">
+                  <label for="linkField">Website Link</label>
+                  <input required ngModel name="link" #link="ngModel" [ngClass]="{'forminvalid': linkerror}" id="link" type="text" class="form-control" id="linkField" placeholder="Website Link">
+                </div>
+                <div class="image-select">
+                  <button>Placeholder for Image Select</button>
+                </div>
+                <div class="form-group">
+                  <label for="descriptionField">Description</label>
+                  <textarea required ngModel name="description" #description="ngModel" [ngClass]="{'forminvalid': descriptionerror}" id="description" class="form-control" id="descriptionField" placeholder="Description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="infoField">Additional Information</label>
+                  <textarea required ngModel name="info" #info="ngModel" [ngClass]="{'forminvalid': infoerror}" id="info" class="form-control" id="infoeField" placeholder="Additional Information" rows="3"></textarea>
+                </div>
+                <div class="form-group text-center">
+                  <button type="submit" class="btn btn-calltoaction">Submit</button>
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

@@ -1,7 +1,8 @@
 version: "2"
 services:
   app:
-    container_name: app
+    container_name: backend
+    image: birdscreekfarmsupplybackend
     restart: always
     build: .
     ports:
