@@ -1,0 +1,24 @@
+Image Server --- we need an image server to store all images related
+to producs and brands, this image server can be its own module but 
+will be a core component. This should be easy, image servers we have
+worked with before, this doesn't need to do anything extravagant like
+store things on google.
+
+Image Server uploads, when should they happen? Progress Bars? Look at
+previous work for references here. This can probably happen in the
+brand/product creation page. We can potentially use an image library
+if needed.
+
+Login Server --- we need a login server that can serve login tokens
+all requests must have a valid token, no requests without one. This
+is complicated but also foundational to what happens next.
+
+Pages --- Many pages need to be created with html and css, these pages
+can be finished either during before or after the backend. 
+
+Revamping the entire system to use IDs will take a short period of 
+time and can be done whenever.
+
+Adding and removing brand pages are the simplest task and should be 
+done first since there are reliant systems. The id change can happen
+later.

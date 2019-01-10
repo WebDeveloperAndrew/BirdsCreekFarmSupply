@@ -1,0 +1,48 @@
+@import "./src/sass/variables";
+
+.searchArea{
+    border: 2px $carouselAccent solid;
+    background-color:$carouselBackground;
+    border-radius: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.search-input{
+    margin-top: 20px;
+    background-color:$carouselBackground;
+    border-color:$carouselAccent;
+    width: 80%;
+    color:$carouselText;
+    text-align: center;
+}
+.search-input:focus{
+    outline:none;
+}
+.buttonlink{
+    background:transparent;
+    border-color: $carouselText;
+    font-size: 1.5vw;
+    padding-left:1vw;
+    padding-right:1vw;
+    border-radius: 5px;
+    border-width: 2px;
+    color: $carouselText;
+    text-shadow: 2px 2px 20px $carouselBorder;
+    box-shadow: 2px 2px 20px $carouselBorder;
+}
+.btn-calltoaction{
+    margin-top: 10px;
+    background-color: transparent;
+    border-color: $carouselText;
+    border-width: 3px;
+    color: $carouselText;
+    -webkit-transition: padding 1s,  border-color 1s, background-color 1s; /* Safari */
+    transition: padding 1s,  border-color 1s, background-color 1s;
+}
+.btn-calltoaction:hover{
+    padding: 6px 44px 6px 44px;
+    border-color: transparent;
+    background-color: $carouselAccent;
+}

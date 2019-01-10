@@ -3,6 +3,7 @@ module.exports = function(app) {
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var dburl = process.env.MONGO_URI;
+mongoose.set('useCreateIndex', true);
 mongoose.connect(dburl);
 
 var productSchema = new Schema({
@@ -33,6 +34,8 @@ app.post('/api/updateproduct', updateProduct);
 app.post('/api/searchproduct', searchProduct);
 app.post('/api/deletedatabase', deleteDatabase);
 app.post('/api/deleteproduct', deleteProduct);
+app.post('/api/deletebrand', deleteBrand);
+app.post('/api/searchbrand', searchBrand);
 app.post('/api/getbrand', getBrand);
 app.post('/api/createbrand', createBrand);
 app.post('/api/updatebrand', updateBrand);
@@ -168,7 +171,7 @@ function createBrand(req, res)
     bran.info = store.info;
     bran.link = store.link;
 
-    bran.save(function(error) {
+    bran.save(function(error, brand) {
       if(error)
       {
         console.error('Error saving data');
@@ -178,7 +181,8 @@ function createBrand(req, res)
       else
       {
         console.log("Success: Brand data created");
-        res.send({"Success":"Brand data created"});
+        console.log(brand);
+        res.send({"Success":"Brand data created", brand});
       }
     });
   });
@@ -186,6 +190,7 @@ function createBrand(req, res)
 
 function updateBrand(req, res)
 {
+  console.log('updating brand test');
   var store = '';
   req.on('data', function(data) 
   {
@@ -223,8 +228,8 @@ function updateBrand(req, res)
     {
       updates.link = store.link;
     }
-
-    brand.findByIdAndUpdate(store.id, {$set: updates}, function (error, bran) {
+    console.log(updates);
+    brand.findOneAndUpdate({"name" : updates.name}, updates, function (error, bran) {
       if(error)
       {
         console.error('Error updating data');
@@ -232,6 +237,7 @@ function updateBrand(req, res)
       }
       else
       {
+        console.log(bran);
         console.log("Success: Brand data updated");
         res.send({"Success":"Brand data updated", "Data": updates });
       }
@@ -243,6 +249,7 @@ function updateBrand(req, res)
 
 function getBrand(req, res) //Version 1 without ID
   {
+    console.log("Getting Brand");
     var store = '';
     req.on('data', function(data) 
     {
@@ -256,6 +263,7 @@ function getBrand(req, res) //Version 1 without ID
       {
         search = store.name;
       }
+      console.log({"name":search});
       brand.find({"name":search}, function(err, result){
         if(err) console.log(err);
         console.log(result);
@@ -343,6 +351,37 @@ function getProduct(req, res)
       });
     });
   }
+
+  function searchBrand(req,res)
+  {
+    var store = '';
+    req.on('data', function(data) 
+    {
+        store += data;
+    });
+    req.on('end', function() 
+    {
+      store = JSON.parse(store);
+      query = new RegExp(store.query, "i");
+      console.log(store);
+      brand.find({$or:[{'name':query},{'description':query},{'image':query},{'link':query},{'info':query}]}, function(err, result){
+        if(err){ 
+          console.error('search error')
+          console.error(err);
+          throw err;
+        }
+        if(result){
+          console.log(result);
+          res.send(result);
+        }
+        else
+        {
+          console.error("Error: No brand was not found");
+          res.send({"Error": "No brand was not found"});
+        }
+      });
+    });
+  }
   function deleteProduct(req,res)
   {
     var store = '';
@@ -368,6 +407,32 @@ function getProduct(req, res)
       });
     });
   }
+  function deleteBrand(req,res)
+  {
+    var store = '';
+    req.on('data', function(data) 
+    {
+        store += data;
+    });
+    req.on('end', function() 
+    {
+      store = JSON.parse(store);
+      console.log(store);
+      brand.findOneAndRemove({'name':store.name}, function(err){
+        if(err){ 
+          console.error('search error')
+          console.error(err);
+          throw err;
+        }
+        else
+        {
+          console.log("Removed: "+store.name);
+          res.send({"Removed": store.name});
+        }
+      });
+    });
+  }
+
   function deleteDatabase(req,res)
   {
     product.deleteMany({}, function(err){

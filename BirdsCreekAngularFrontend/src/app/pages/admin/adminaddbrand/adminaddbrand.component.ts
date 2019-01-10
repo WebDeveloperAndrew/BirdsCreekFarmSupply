@@ -12,13 +12,15 @@ export class AdminaddbrandComponent implements OnInit {
   oldimage = '';
   uploading = false;
   uploaded = false;
+  submitted=false;
   nameerror=false;
+  brandinuse=false;
   imageerror=false;
   websiteerror=false;
   descriptionerror=false;
   selectedFile: File = null;
   imageDatabase="http://localhost:4000/api/imageserver/upload";
-  server="http://localhost:4000/api/createbrand"
+  database="http://localhost:4000/api/"
 
   constructor(private http: HttpClient){
   }
@@ -28,7 +30,6 @@ export class AdminaddbrandComponent implements OnInit {
 
   imageUpload(event)
   {
-    console.log(event.target.files[0]);
     if(event.target.files[0])
     {
       this.selectedFile = event.target.files[0];
@@ -46,7 +47,9 @@ export class AdminaddbrandComponent implements OnInit {
         
       this.http.post(this.imageDatabase, fd)
           .subscribe(res => {
-            console.log(res);
+            console.group('Upload Information');
+              console.log(res);
+            console.groupEnd();
             this.uploading = false;
             this.uploaded = true;
             this.imageupload = 'http://localhost:4000'+ res['image'];
@@ -58,9 +61,9 @@ export class AdminaddbrandComponent implements OnInit {
   public onSubmit(content) {
     this.nameerror=false;
     this.imageerror=false;
+    this.submitted=false;
     this.websiteerror=false;
     this.descriptionerror=false;
-    console.log(content.value.name);
     if(content.value.name != "" && content.value.link != "" && content.value.description != "" && this.uploaded == true && content.value.name && content.value.link && content.value.description)
     {
       const httpOptions = {
@@ -69,32 +72,52 @@ export class AdminaddbrandComponent implements OnInit {
         })
       };
       event.preventDefault();
-      console.log(content.value);
-      const req = this.http.post(this.server, JSON.stringify({"name": content.value.name, "image": this.imageupload, "link": content.value.link, "description": content.value.description, "info": content.value.info}), httpOptions)
+      const req = this.http.post(this.database + "createbrand", JSON.stringify({"name": content.value.name, "image": this.imageupload, "link": content.value.link, "description": content.value.description, "info": content.value.info}), httpOptions)
         .subscribe(
           res => {
-            console.log(res);
-            content.form.reset();
-            this.imageupload = '/assets/img/placeholder.png';
-            this.uploaded = false;
+            if(res['name'] == "MongoError")
+            {
+              console.group('Error Information');
+
+              if(res['code'] == 11000)
+              {
+                console.log('Duplicate Brand')
+                this.brandinuse=true;
+              }
+              console.error(res);
+              console.groupEnd();
+            }
+            else
+            {
+              console.group('Upload Information');
+                console.log(res);
+              console.groupEnd();
+              content.form.reset();
+              this.imageupload = '/assets/img/placeholder.png';
+              this.uploaded = false;
+              this.oldimage = '';
+              this.brandinuse = false;
+              this.submitted=true;
+            }
           },
           err => {
-            console.log("Error occured");
-            
+            console.group('Error Information');
+              console.log("Error occured");
+            console.groupEnd();
           }
         );
     }
     else
     {
-      if(content.value.name == "" || content.value.name != true)
+      if(content.value.name == "" || content.value.name == null)
       {
         this.nameerror=true;
       }
-      if(content.value.link == "" || content.value.link != true)
+      if(content.value.link == "" || content.value.link == null)
       {
         this.websiteerror=true;
       }
-      if(content.value.description == "" || content.value.description != true)
+      if(content.value.description == "" || content.value.description == null)
       {
         this.descriptionerror=true;
       }

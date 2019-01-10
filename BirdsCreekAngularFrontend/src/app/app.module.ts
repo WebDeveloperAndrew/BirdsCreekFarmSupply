@@ -30,6 +30,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SeoService } from './seo.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrandresultComponent } from './components/brandresult/brandresult.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProductpageComponent,
     ProductspageComponent,
     SearchpageComponent,
-    ChickspageComponent
+    ChickspageComponent,
+    BrandresultComponent
   ],
   imports: [
     AppRoutingModule,

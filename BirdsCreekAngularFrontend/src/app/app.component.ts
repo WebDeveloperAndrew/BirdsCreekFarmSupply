@@ -13,11 +13,9 @@ export class AppComponent {
     router.events.subscribe(event => {
 
       if (event instanceof NavigationEnd ) {
-        console.log(event.url);
-        console.log(event.url.split('/')[1] == 'admin');
         if(event.url.split('/')[1] == 'admin')
         {
-          console.log('Admin is active');
+          console.log('Admin Mode is active');
           this.admin = true;
         }
         
