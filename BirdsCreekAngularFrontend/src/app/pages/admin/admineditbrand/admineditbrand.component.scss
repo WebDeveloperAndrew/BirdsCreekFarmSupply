@@ -1,4 +1,4 @@
-@import "./src/sass/variables";
+@import "src/sass/variables";
 
 .container{
     font-family: round, sans-serif;
@@ -10,7 +10,11 @@ h1{
 }
 
 label{
-    display:none;
+    color: $primaryAccent;
+    margin-bottom:0px;
+}
+.form-group{
+    margin-bottom:5px;
 }
 
 #fileupload {

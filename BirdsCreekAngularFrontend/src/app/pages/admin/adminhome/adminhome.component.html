@@ -1,3 +1,27 @@
-<p>
-  adminhome works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1>Control Panel</h1>
+    </div>
+    <div class="col-md-12 text-center">
+        <h3>Toggle Products Page</h3>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-4 text-center"><h4>Old Products</h4>
+    </div>
+    <div class="col-md-2 text-center">
+      <div class="slider-container">
+        <label class="switch">
+            <input type="checkbox" [(ngModel)]="products">
+            <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+    <div class="col-md-4 text-center"><h4>Search Products</h4>
+    <div class="col-md-1"></div>
+    </div>
+    <div class="col-md-12 text-center ">
+        <button class="btn btn-calltoaction" (click)="changeSettings()">Update Settings</button>
+    </div>
+  </div>
+</div>

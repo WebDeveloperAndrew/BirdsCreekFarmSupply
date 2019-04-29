@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  app:
+    container_name: BirdsCreekBackend
+    image: birdscreekfarmsupplybackend
+    restart: always
+    build: .
+    ports:
+      - "4000:4000"
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    volumes:
+      - images:/images
+  mongo:
+    container_name: BirdsCreekMongoDB
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - bc_mongodb:/data/db
+      - bc_mongodb_config:/data/configdb
+volumes:
+  bc_mongodb:
+  bc_mongodb_config:
+  images:

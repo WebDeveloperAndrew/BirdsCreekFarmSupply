@@ -1,3 +1,35 @@
-<p>
-  adminpromotions works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1>Promotions</h1>
+      <h2>Current Promotion</h2>
+    </div>
+    <div class="col-md-12 text-center ">
+      <div class="promotion-image-div-selected"><img class="promotion-image-selected" src="{{currentPromotion.image}}"></div>
+    </div>
+    <div class="col-md-12 text-center">
+        <h2>Select Promotion</h2>
+    </div>
+
+    <div class="col-md-3 text-center" id="promotion" *ngFor="let promotion of promotions">
+        <button class="promotion" (click)="selectPromotion(promotion)"><div id="{{promotion.name}}" class="promotion-image-div {{promotion.selected}}"><img class="promotion-image" src="{{promotion.image}}"></div></button>
+    </div>
+<!--
+    <div class="col-md-3 text-center">
+      <button class="promotion"><div id="spring" class="promotion-image-div selected"><img class="promotion-image" src="{{chicks}}"></div></button>
+    </div>
+    <div class="col-md-3 text-center">
+      <button class="promotion"><div id="summer" class="promotion-image-div"><img class="promotion-image" src="{{summerfootwear}}"></div></button>
+    </div>
+    <div class="col-md-3 text-center">
+      <button class="promotion"><div id="autumn" class="promotion-image-div"><img class="promotion-image" src="{{pellets}}"></div></button>
+    </div>
+    <div class="col-md-3 text-center">
+      <button class="promotion"><div id="winter" class="promotion-image-div"><img class="promotion-image" src="{{winterfootwear}}"></div></button>
+    </div>
+-->
+    <div class="col-md-12 text-center ">
+        <button class="btn btn-calltoaction" (click)="changePromotion()">Update Promotion</button>
+    </div>
+  </div>
+</div>

@@ -9,9 +9,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ProductpageComponent implements OnInit {
   
-  displayData:any = {'title':'loading...','subtitle':'loading...','description':'loading...','image':'loading...','info':'loading...'};
+  displayData:any = {'name':'loading...','subtitle':'loading...','description':'loading...','image':'loading...','info':'loading...'};
   brandData:any = {'link':'loading...', 'image':'loading...'};
-  productData = {'title':'WHOLESOME ESSENTIALS™', 'subtitle':'ADULT DRY DOG FOOD PASTURE-FED LAMB & RICE RECIPE', 'img':'/assets/img/nutroproduct.png', 'description':'NUTRO™ WHOLESOME ESSENTIALS™ Adult Pasture-Fed Lamb & Rice Recipe Dog Food always starts with pasture-fed lamb as the first ingredient. This natural adult dog food provides natural fiber for healthy digestion and essential antioxidants, such as Vitamin E, for a healthy immune system, plus vitamins, minerals and other nutrients. These recipes are also crafted to promote healthy skin and a soft, shiny coat. NUTRO™ Food for Dogs also follows the THE NUTRO FEED CLEAN™ philosophy, is always made with Non-GMO* Ingredients and is made with no artificial flavors, colors or preservatives.', 'logo':'/assets/img/nutrologo.png', 'brand':'https://www.nutro.com/', 'info':'Weight: 5lb <br> Metabolizable Energy: 311 kcal/cup <br> Other Information: none'};
+  productData = {'name':'WHOLESOME ESSENTIALS™', 'subtitle':'ADULT DRY DOG FOOD PASTURE-FED LAMB & RICE RECIPE', 'img':'/assets/img/nutroproduct.png', 'description':'NUTRO™ WHOLESOME ESSENTIALS™ Adult Pasture-Fed Lamb & Rice Recipe Dog Food always starts with pasture-fed lamb as the first ingredient. This natural adult dog food provides natural fiber for healthy digestion and essential antioxidants, such as Vitamin E, for a healthy immune system, plus vitamins, minerals and other nutrients. These recipes are also crafted to promote healthy skin and a soft, shiny coat. NUTRO™ Food for Dogs also follows the THE NUTRO FEED CLEAN™ philosophy, is always made with Non-GMO* Ingredients and is made with no artificial flavors, colors or preservatives.', 'logo':'/assets/img/nutrologo.png', 'brand':'https://www.nutro.com/', 'info':'Weight: 5lb <br> Metabolizable Energy: 311 kcal/cup <br> Other Information: none'};
   database="http://localhost:4000/api/";
   id;
   
@@ -55,9 +55,11 @@ export class ProductpageComponent implements OnInit {
         'Content-Type':  'application/json'
       })
     };
+    console.log(this.displayData);
     this.http.post(this.database+"getbrand", JSON.stringify({"name":this.displayData['brand']}), httpOptions)
       .subscribe(
         res => {
+          console.log(res);
           this.brandData = res;
         },
         err => {

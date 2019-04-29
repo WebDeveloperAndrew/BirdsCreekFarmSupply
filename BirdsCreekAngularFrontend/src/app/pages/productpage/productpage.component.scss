@@ -1,4 +1,4 @@
-@import "./src/sass/variables";
+@import "src/sass/variables";
 .container-fluid
 {
     font-family: round, sans-serif;
@@ -19,6 +19,10 @@ button{
 
 p{
     font-weight:600;
+}
+
+.brandicon{
+    width:80px;
 }
 
 .calltoaction{

@@ -15,8 +15,8 @@ import { AdminbrandsComponent } from './pages/admin/adminbrands/adminbrands.comp
 import { AdminpromotionsComponent } from './pages/admin/adminpromotions/adminpromotions.component';
 import { AdminaddbrandComponent } from './pages/admin/adminaddbrand/adminaddbrand.component';
 import { AdmineditbrandComponent } from './pages/admin/admineditbrand/admineditbrand.component';
-
-
+import { AdminaddproductComponent } from './pages/admin/adminaddproduct/adminaddproduct.component';
+import { AdmineditproductComponent } from './pages/admin/admineditproduct/admineditproduct.component';
 const appRoutes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomepageComponent },
@@ -39,6 +39,8 @@ const appRoutes: Routes = [
     { path: 'admin/login', component: AdminloginComponent },
     { path: 'admin/home', component: AdminhomeComponent },
     { path: 'admin/products', component: AdminproductsComponent },
+    { path: 'admin/addproduct', component: AdminaddproductComponent },
+    { path: 'admin/editproduct/:productid', component: AdmineditproductComponent },
     { path: 'admin/brands', component: AdminbrandsComponent },
     { path: 'admin/addbrand', component: AdminaddbrandComponent },
     { path: 'admin/editbrand/:brandname', component: AdmineditbrandComponent },

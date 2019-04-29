@@ -1,0 +1,87 @@
+@import "src/sass/variables";
+.container{
+    padding-top:30px;
+    padding-bottom:30px;
+}
+h1{
+    margin-bottom:10px;
+}
+
+.switch input { 
+    display:none;
+}
+.switch {
+    display:inline-block;
+    width:100%;
+    height:30px;
+    transform:translateY(50%);
+    position:relative;
+}
+
+h4{
+    color:$primaryAccent;
+    margin-top:12px;
+}
+.slider-container
+{
+    width:90px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.slider {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    border-radius:30px;
+    box-shadow:0 0 0 2px $primaryAccent, 0 0 4px $primaryAccent;
+    cursor:pointer;
+    border:4px solid transparent;
+    overflow:hidden;
+     transition:.4s;
+}
+.slider:before {
+    position:absolute;
+    content:"";
+    width:50%;
+    height:100%;
+    background: $primaryAccent;
+    border-radius:30px;
+    transform:translateX(-40px);
+    transition:.4s;
+}
+
+input:checked + .slider:before {
+    transform:translateX(0px);
+    background:$primaryAccent;
+}
+input:checked + .slider {
+    box-shadow:0 0 0 2px $primaryAccent,0 0 2px $primaryAccent;
+}
+
+.btn-calltoaction{
+    margin-top: 20px;
+    background-color: transparent;
+    border-color: $primaryAccent;
+    border-width: 3px;
+    font-weight:bold;
+    color: $primaryAccent;
+    -webkit-transition: padding 1s,  border-color 1s, background-color 1s; /* Safari */
+    transition: padding 1s,  border-color 1s, background-color 1s;
+
+}
+.btn-calltoaction:hover{
+    padding: 6px 34px 6px 34px;
+    border-color: transparent;
+    background-color: $carouselText;
+}
+
+.btn-calltoaction:active {
+    outline:none;
+    box-shadow: none;
+}
+.btn-calltoaction:focus {
+    outline:none;
+    box-shadow: none;
+}

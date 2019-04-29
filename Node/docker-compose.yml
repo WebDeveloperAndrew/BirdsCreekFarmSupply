@@ -13,6 +13,7 @@ services:
       - mongo
     volumes:
       - images:/images
+      - settings:/settings
   mongo:
     container_name: BirdsCreekMongoDB
     image: mongo
@@ -25,3 +26,4 @@ volumes:
   bc_mongodb:
   bc_mongodb_config:
   images:
+  settings:

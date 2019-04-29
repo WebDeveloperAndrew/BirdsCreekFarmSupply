@@ -5,21 +5,46 @@
     padding-top:50px;
     font-weight:600;
 }
-a{
-    color:blue;
-    font-size:10px;
-}
 h1{
-    margin-bottom:0px;
+    margin-bottom:20px;
+}
+
+label{
+    display:none;
+}
+
+#fileupload {
+    width: 0px;
+    height: 0px;
+	opacity: 0;
+	overflow: hidden;
+    z-index: -1;
+
+}
+
+#fileuploadimage{
+    width: 100%;
+
+    border-width: 3px;
+    border-radius : 10px;
+}
+
+.inputfilelabel {
+    margin-top:5px;
+    margin-bottom:10px;
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    display: inline-block;
 }
 
 .btn-calltoaction{
     margin-top: 10px;
     background-color: transparent;
-    border-color: $carouselText;
+    border-color: $primaryAccent;
     border-width: 3px;
     font-weight:bold;
-    color: $carouselText;
+    color: $primaryAccent;
     -webkit-transition: padding 1s,  border-color 1s, background-color 1s; /* Safari */
     transition: padding 1s,  border-color 1s, background-color 1s;
 }
@@ -27,7 +52,6 @@ h1{
     padding: 6px 34px 6px 34px;
     border-color: transparent;
     background-color: $carouselText;
-    color: $carouselAccent;
 }
 
 .btn-calltoaction:active {
@@ -43,7 +67,78 @@ input, textarea{
     background-color: $primaryBackground;
     border-color: $primaryText;
     font-weight:600;
+    resize: none;
 }
+
+.inputtitle{
+    background-color: $primaryBackground;
+    border-color: $primaryText;
+    font-weight:600;
+    resize: none;
+    color: $primaryAccent;
+    border-color: black;
+    border-width: 1px 0px 1px 1px;
+    border-radius: 4px 0px 0px 4px;
+}
+.inputcurrency{
+    background-color: $primaryBackground;
+    border-color: $primaryText;
+    font-weight:600;
+    resize: none;
+    padding-right: 3px;
+    color: $primaryAccent;
+    border-color: black;
+    border-width: 1px 0px 1px 1px;
+    border-radius: 0px;
+}
+.imageicon{
+    width:16px;
+    height:16px;
+}
+.inputstyle{
+    background-color: $primaryBackground;
+    border-color: $primaryText;
+    font-weight:600;
+    resize: none;
+    
+    color: $primaryAccent;
+    border-color: black;
+    border-width: 1px;
+    padding: 6px 12px 6px 12px;
+    border-radius: 0px 4px 4px 0px;
+}
+.price-control{
+    border-width: 1px 1px 1px 0px;
+    padding-left:0px;
+}
+
+option{
+    border: none;
+    color: $primaryAccent;
+    background-color: $primaryBackground;
+    font-weight:600;
+    padding: 6px 12px 6px 12px;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+option:hover,
+option:focus,
+option:active,
+option:checked {
+    outline:none;
+    box-shadow: none;
+    color: $primaryAccent;
+    background-color: $primaryBackground;
+}
+
+.inputstyle:focus {
+    outline:none;
+    box-shadow: none;
+}
+
 .alert-info{
     background-color:#467782;
     border-color:#467782;
@@ -68,18 +163,6 @@ textarea:focus, input:focus {
 }
 input, select, textarea{
     color: #000;
-}
-
-label{
-    color:$carouselText;
-}
-
-.loginbox{
-    background-color: $carouselBackground;
-    border-radius: 20px;
-    padding-top: 20px;
-    padding-bottom:10px;
-    margin-bottom:20px;
 }
 
 iframe{
@@ -127,5 +210,8 @@ iframe{
     p{
         text-align: center;
     }
-
+    iframe{
+        width:100%;
+        height:calc(width*1.5);
+    }
 }

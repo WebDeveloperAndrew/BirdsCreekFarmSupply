@@ -1,4 +1,4 @@
-@import "./src/sass/variables";
+@import "src/sass/variables";
 .container{
     padding-top:30px;
     padding-bottom:30px;
@@ -6,6 +6,7 @@
 h2{
     margin-top:16px;
     color:$carouselText;
+    font-size:24px;
 }
 #addproduct
 {
@@ -42,7 +43,7 @@ h3{
     font-size: 1.2vw;
     color:$carouselText;
     text-shadow: 2px 2px 20px $carouselBorder;
-    
+    margin-top:10px;
 }
 @media only screen and (max-width: $large-display) {
     .prodimg{
