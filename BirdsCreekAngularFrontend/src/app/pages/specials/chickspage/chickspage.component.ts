@@ -12,9 +12,9 @@ export class ChickspageComponent implements OnInit {
   title = "Poultry Pricing and Delivery Schedules";
   subtitle = "Chicks, Turkeys, Ducks, Pheasants";
   chicks = '/assets/img/chicks.jpg';
-  price = '/assets/files/2018-Price-List.pdf';
+  price = '/assets/files/2019-Delivery-Schedule.pdf';
   delivery = '/assets/img/delivery.jpg';
-  schedule = '/assets/files/2018-Delivery-Schedule.pdf';
+  schedule = '/assets/files/2019-Delivery-Schedule.pdf';
   ngOnInit() {
     this.seo.generateTags({
       title: 'Chicks Page',

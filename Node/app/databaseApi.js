@@ -26,6 +26,7 @@ module.exports = function (app) {
     autoIndex: false,
     useNewUrlParser: true,
   };
+  mongoose.set('useFindAndModify', false);
   mongoose.set('useCreateIndex', true);
   mongoose.connect(dburl, config);
 
@@ -153,42 +154,43 @@ module.exports = function (app) {
     req.on('end', function () {
       try {
         store = JSON.parse(store);
-      }
-      catch (e) {
-        if (logging != "none") {
-          console.log(e);
-          console.error("Could Not Parse JSON data");
-        }
-        res.send("Could Not Parse JSON data")
-      }
-      var prod = new product();
 
-      if (logging === "debug") { console.log(store); }
+        var prod = new product();
 
-      prod.title = store.title;
-      prod.subtitle = store.subtitle;
-      prod.image = store.image;
-      prod.description = store.description;
-      prod.info = store.info;
-      prod.price = store.price;
-      prod.brand = store.brand;
+        if (logging === "debug") { console.log(store); }
 
-      if (logging === "debug") { console.log(prod); }
+        prod.title = store.title;
+        prod.subtitle = store.subtitle;
+        prod.image = store.image;
+        prod.description = store.description;
+        prod.info = store.info;
+        prod.price = store.price;
+        prod.brand = store.brand;
 
-      prod.save(function (error) {
-        if (error) {
-          if (logging != "none") {
-            console.error('Error saving data');
-            console.log(prod);
-            console.log(error);
+        if (logging === "debug") { console.log(prod); }
+
+        prod.save(function (error) {
+          if (error) {
+            if (logging != "none") {
+              console.error('Error saving data');
+              console.log(prod);
+              console.log(error);
+            }
+            res.send({ prod, error });
           }
-          res.send({ prod, error });
+          else {
+            if (logging != "none") { console.log("Success: Product data created"); }
+            res.send({ "Success": "Product data created" });
+          }
+        });
         }
-        else {
-          if (logging != "none") { console.log("Success: Product data created"); }
-          res.send({ "Success": "Product data created" });
+        catch (e) {
+          if (logging != "none") {
+            console.log(e);
+            console.error("Could Not Parse JSON data");
+          }
+          res.send("Could Not Parse JSON data")
         }
-      });
     });
   }
 
@@ -250,7 +252,10 @@ module.exports = function (app) {
         }
         else {
           if (logging != "none") {
-            console.log({ "Success": "Product data updated", "Data": updates });
+            console.log({ "Success": "Product data updated"});
+          }
+          if (logging === "debug"){
+            console.log({"Data": updates}); 
           }
           res.send({ "Success": "Product data updated", "Data": updates });
         }
@@ -294,7 +299,10 @@ module.exports = function (app) {
         }
         else {
           if (logging != "none") {
-            console.log({ "Success": "Brand data created", brand });
+            console.log({ "Success": "Brand data created"});
+          }
+          if (logging === "debug"){
+            console.log({"Data": brand}); 
           }
           res.send({ "Success": "Brand data created", brand });
         }
@@ -350,7 +358,10 @@ module.exports = function (app) {
         }
         else {
           if (logging != "none") {
-            console.log({ "Success": "Brand data updated", "Data": updates });
+            console.log({ "Success": "Brand data updated"});
+          }
+          if (logging === "debug"){
+            console.log({"Data": updates}); 
           }
           res.send({ "Success": "Brand data updated", "Data": updates });
         }
@@ -371,11 +382,9 @@ module.exports = function (app) {
       store = JSON.parse(store);
       if (store.name) {
         search = store.name;
-      }
       if (logging === "debug") {
         console.log({ "name": search });
       }
-
       brand.find({ "name": search }, function (err, result) {
         if (err) { if (logging != "none") { console.log(err); } }
         if (logging === "debug") {
@@ -389,6 +398,10 @@ module.exports = function (app) {
           brandx.info = result[0].info;
           brandx.link = result[0].link;
           if (logging != "none") {
+            console.log("Brand Data Sent: "+ brandx.name);
+          }
+          if (logging === "debug") 
+          {
             console.log(brandx);
           }
           res.send(brandx);
@@ -400,9 +413,17 @@ module.exports = function (app) {
           res.send({ "Error": "The id was not found" });
         }
       });
+    }
+    else
+    {
+      if (logging != "none") {
+        console.error({"Error": "No Brand Name was Provided"});
+      }
+      res.send({"Error": "No Brand Name was Provided"});
+      
+    }
     });
   }
-
 
   function getProduct(req, res) {
     if (logging === "debug") { console.log("Attempting to Get Product"); }
@@ -430,6 +451,9 @@ module.exports = function (app) {
           productx.price = result.price;
           productx.brand = result.brand;
           if (logging != "none") {
+            console.log("Product Data Sent: "+ productx.title);
+          }
+          if (logging === "debug") {
             console.log(productx);
           }
           res.send(productx);
@@ -464,6 +488,9 @@ module.exports = function (app) {
         }
         if (result) {
           if (logging != "none") {
+            console.log('List of Products Sent');
+          }
+          if (logging === "debug") {
             console.log(result);
           }
           res.send(result);
@@ -500,6 +527,9 @@ module.exports = function (app) {
         }
         if (result) {
           if (logging != "none") {
+            console.log('List of Brands Sent');
+          }
+          if (logging === "debug") {
             console.log(result);
           }
           res.send(result);
@@ -533,9 +563,9 @@ module.exports = function (app) {
         }
         else {
           if (logging != "none") {
-            console.log("Removed: " + store.id);
+            console.log("Removed: " + store.title);
           }
-          res.send({ "Removed": store.id });
+          res.send({ "Removed": store.title });
         }
       });
     });

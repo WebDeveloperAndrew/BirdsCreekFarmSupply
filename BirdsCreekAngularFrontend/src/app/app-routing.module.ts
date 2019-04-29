@@ -6,6 +6,9 @@ import { ContactpageComponent } from './pages/contactpage/contactpage.component'
 import { ProductspageComponent } from './pages/productspage/productspage.component';
 import { ProductpageComponent } from './pages/productpage/productpage.component';
 import { ChickspageComponent } from './pages/specials/chickspage/chickspage.component';
+import { SummerfootwareComponent } from './pages/specials/summerfootware/summerfootware.component';
+import { WinterfootwareComponent } from './pages/specials/winterfootware/winterfootware.component';
+import { WoodpelletsComponent } from './pages/specials/woodpellets/woodpellets.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { SearchpageComponent } from './pages/searchpage/searchpage.component';
 import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
@@ -24,6 +27,9 @@ const appRoutes: Routes = [
     { path: 'contact', component: ContactpageComponent},
     { path: 'products', component: ProductspageComponent},
     { path: 'chicks', component: ChickspageComponent},
+    { path: 'summerfootware', component: SummerfootwareComponent},
+    { path: 'winterfootware', component: WinterfootwareComponent},
+    { path: 'woodpellets', component: WoodpelletsComponent},
     { path: 'search', component: SearchpageComponent},
     { path: 'product/:productid', component: ProductpageComponent},
     { path: 'about-us', redirectTo: '/about', pathMatch: 'full'},

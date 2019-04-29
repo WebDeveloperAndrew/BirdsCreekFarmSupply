@@ -31,6 +31,9 @@ import { SeoService } from './seo.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrandresultComponent } from './components/brandresult/brandresult.component';
+import { WoodpelletsComponent } from './pages/specials/woodpellets/woodpellets.component';
+import { SummerfootwareComponent } from './pages/specials/summerfootware/summerfootware.component';
+import { WinterfootwareComponent } from './pages/specials/winterfootware/winterfootware.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,10 @@ import { BrandresultComponent } from './components/brandresult/brandresult.compo
     ProductspageComponent,
     SearchpageComponent,
     ChickspageComponent,
-    BrandresultComponent
+    BrandresultComponent,
+    WoodpelletsComponent,
+    SummerfootwareComponent,
+    WinterfootwareComponent
   ],
   imports: [
     AppRoutingModule,

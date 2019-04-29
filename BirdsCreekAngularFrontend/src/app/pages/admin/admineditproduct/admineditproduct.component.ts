@@ -104,6 +104,15 @@ export class AdmineditproductComponent implements OnInit {
 
   findProduct(id)
   {
+    /*
+    IF USING GET
+    let headers = new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+    let params = new HttpParams().set('id', id);
+    this.http.get(this.database+"getproduct", {headers: headers, params: params})
+    */
+   
     console.log("finding product");
     console.log(id);
     const httpOptions = {
