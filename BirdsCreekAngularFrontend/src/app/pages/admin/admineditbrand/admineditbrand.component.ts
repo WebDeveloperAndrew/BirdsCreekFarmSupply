@@ -27,11 +27,21 @@ export class AdmineditbrandComponent implements OnInit {
   description="";
   info="";
   link="";
-  imageDatabase="http://localhost:4000/api/imageserver/upload";
-  database="http://localhost:4000/api/"
+  imageDatabase="imageserver/upload";
+  database;
+  imageDatastore;
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {}
   ngOnInit() {
+    this.http.get('/assets/appConfig.json').subscribe(config => {
+      this.database = config['database'];
+      this.imageDatastore = config['imageDatastore'];
+      this.AppConfiguration();
+    });
+
+  }
+  
+  AppConfiguration(){
     this.route.params.subscribe(params => {
       console.log(params['brandname']);
       this.findBrand(params['brandname']);
@@ -101,7 +111,7 @@ export class AdmineditbrandComponent implements OnInit {
       if(this.oldimage)
         fd.append('oldimage',this.oldimage);
         
-      this.http.post(this.imageDatabase, fd)
+      this.http.post(this.database+this.imageDatabase, fd)
           .subscribe(res => {
             console.group('Upload Information');
               console.log(res);
@@ -111,7 +121,7 @@ export class AdmineditbrandComponent implements OnInit {
             this.uploadedmessage = true;
             this.submitted = false;
             console.log(res['image']);
-            this.imageupload = 'http://localhost:4000' + res['image'];
+            this.imageupload = this.imageDatastore + res['image'];
             this.imageerror=false;
             this.oldimage = res['filename'];
           });

@@ -16,7 +16,7 @@ export class AdminproductsComponent implements OnInit {
   farm = '/assets/img/farmsupplies.jpg';
   construction = '/assets/img/construction.jpg';
   garden = '/assets/img/garden.jpg';
-  database="http://localhost:4000/api/";
+  database;
 
   constructor(private http: HttpClient){
   }
@@ -79,7 +79,11 @@ export class AdminproductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.collectData();
+    this.http.get('/assets/appConfig.json').subscribe(config => {
+      this.database = config['database'];
+      this.collectData();
+    });
+    
   }
 
 }

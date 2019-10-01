@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeoService } from '../../../seo.service';
 
 @Component({
   selector: 'app-woodpellets',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WoodpelletsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private seo: SeoService) { }
+  title = "Woodpellets";
+  subtitle = "In stock now, wood pellets for all your heating season needs. Soft wood Hard wood and Blended pellets.";
+  pellets = '/assets/img/pellets.jpg';
   ngOnInit() {
+    this.seo.generateTags({
+      title: 'Woodpellets Page',
+      description: 'In stock now, wood pellets for all your heating season needs. Soft wood Hard wood and Blended pellets.',
+      image: 'assets/img/pellets.jpg',
+      slug: 'pellets'
+    })
   }
-
 }

@@ -14,11 +14,14 @@ export class AdminloginComponent implements OnInit {
   loginerror=false;
   passworderror=false;
   passwordlengtherror=false;
-  loginServer = "http://localhost:4000/api/";
+  loginServer;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.http.get('/assets/appConfig.json').subscribe(config => {
+      this.loginServer = config['database'];
+    });
   }
 
   onSubmit(login){

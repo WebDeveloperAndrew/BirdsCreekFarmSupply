@@ -1,7 +1,10 @@
 Current challenges/completion targets
 -Login/Route blocking
--Admin panel affecting specials/search/products
 -Saving database/images without docker deleting ***
+
+Temporary Solution:
 -Map api calls over --- find permanant solution.
 
+Completed:
+-Admin panel affecting specials/search/products
 Pages should all be completed for version 1

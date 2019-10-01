@@ -10,20 +10,29 @@ export class MainmenuComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
   
-  database="http://localhost:4000/api/"
+  database;
   products="false";
   public menuToggle = false;
   isCollapsed = true;
   public logo = "/assets/img/logo.png";
   
   ngOnInit() {
-    this.http.get(this.database+"gethomesettings")
+    console.log("Getting AppConfig");
+    this.http.get('/assets/appConfig.json').subscribe(config => {
+      this.database = config['database'];
+      console.log(this.database);
+      this.AppConfiguration();
+    });
+  }
+
+  AppConfiguration(){
+  this.http.get(this.database+"gethomesettings")
     .subscribe(
       res => {
         console.log(res);
-        this.products = res['products'];
+        if(res)
+          this.products = res['products'];
       }
     );
   }
-
 }

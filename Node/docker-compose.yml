@@ -2,7 +2,7 @@ version: "2"
 services:
   app:
     container_name: BirdsCreekBackend
-    image: birdscreekfarmsupplybackend
+    image: webdeveloperandrew/bcfarmsupplybackend
     restart: always
     build: .
     ports:
@@ -12,8 +12,8 @@ services:
     depends_on:
       - mongo
     volumes:
-      - images:/images
-      - settings:/settings
+      - .images:/images
+      - .settings:/settings
   mongo:
     container_name: BirdsCreekMongoDB
     image: mongo

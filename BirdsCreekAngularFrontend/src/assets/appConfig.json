@@ -1,0 +1,5 @@
+{
+    "mailer": "http://localhost:3000/mail",
+    "database": "https://localhost:4000/api/",
+    "imageDatastore": "https://localhost:4000"
+}

@@ -9,9 +9,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AdminhomeComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
-  database="http://localhost:4000/api/"
+  database;
   products="false";
   ngOnInit() {
+    this.http.get('/assets/appConfig.json').subscribe(config => {
+      this.database = config['database'];
+      this.AppConfiguration();
+    });
+    
+  }
+
+  AppConfiguration()
+  {
     this.http.get(this.database+"gethomesettings")
     .subscribe(
       res => {
@@ -20,6 +29,7 @@ export class AdminhomeComponent implements OnInit {
       }
     );
   }
+
   changeSettings()
   {
     console.log('changing settings');

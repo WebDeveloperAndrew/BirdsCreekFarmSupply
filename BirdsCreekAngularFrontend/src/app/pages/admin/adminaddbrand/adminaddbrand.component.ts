@@ -19,13 +19,18 @@ export class AdminaddbrandComponent implements OnInit {
   websiteerror=false;
   descriptionerror=false;
   selectedFile: File = null;
-  imageDatabase="http://localhost:4000/api/imageserver/upload";
-  database="http://localhost:4000/api/"
+  imageDatabase="imageserver/upload";
+  database;
+  imageDatastore;
 
   constructor(private http: HttpClient){
   }
 
   ngOnInit() {
+    this.http.get('/assets/appConfig.json').subscribe(config => {
+      this.database = config['database'];
+      this.imageDatastore = config['imageDatastore'];
+    });
   }
 
   imageUpload(event)
@@ -45,14 +50,14 @@ export class AdminaddbrandComponent implements OnInit {
       if(this.oldimage)
         fd.append('oldimage',this.oldimage);
         
-      this.http.post(this.imageDatabase, fd)
+      this.http.post(this.database+this.imageDatabase, fd)
           .subscribe(res => {
             console.group('Upload Information');
               console.log(res);
             console.groupEnd();
             this.uploading = false;
             this.uploaded = true;
-            this.imageupload = 'http://localhost:4000'+ res['image'];
+            this.imageupload = this.imageDatastore + res['image'];
             this.imageerror=false;
             this.oldimage = res['filename'];
           });

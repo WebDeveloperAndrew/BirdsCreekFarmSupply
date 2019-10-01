@@ -11,7 +11,7 @@ export class AdminbrandsComponent implements OnInit {
   displayData= [];
   searchParam;
   content = false;
-  database="http://localhost:4000/api/";
+  database;
 
   constructor(private http: HttpClient){
   }
@@ -74,6 +74,10 @@ export class AdminbrandsComponent implements OnInit {
     return data;
   }
   ngOnInit() {
-    this.collectData();
+    this.http.get('/assets/appConfig.json').subscribe(config => {
+      this.database = config['database'];
+      this.collectData();
+    });
+    
   }
 }

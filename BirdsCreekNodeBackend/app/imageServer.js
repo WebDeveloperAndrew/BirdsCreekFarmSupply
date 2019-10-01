@@ -2,6 +2,14 @@ module.exports = function(app, express) {
     const shortid = require('shortid');
     const fs = require('fs');
     const mime = require('mime-types');
+    
+    app.use(function(req, res, next) {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE');
+      res.header('Access-Control-Allow-Headers', 'Content-Type');
+      next();
+    });
+
     app.use('/api/imageserver', express.static('./images'));
     var multer  = require('multer');
     const storage = multer.diskStorage({

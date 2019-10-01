@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AdminmainmenuComponent implements OnInit {
 
   public logo = "/assets/img/logo.png";
-  
+  public menuToggle = false;
   constructor() { }
 
   ngOnInit() {

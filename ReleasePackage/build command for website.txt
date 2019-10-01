@@ -1,0 +1,8 @@
+ng build --baseHref="https://birdscreekfarmsupply.ca" --prod=true
+docker build . -t "webdeveloperandrew/bcfarmsupplywebsite"
+docker push webdeveloperandrew/bcfarmsupplywebsite:latest
+
+docker build . -t "webdeveloperandrew/bcfarmsupplybackend"
+docker push webdeveloperandrew/bcfarmsupplybackend:latest
+
+Don't forget appconfig

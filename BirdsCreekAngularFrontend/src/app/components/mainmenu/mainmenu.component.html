@@ -4,8 +4,8 @@
       <nav>
         <ul>
           <li class="left"><a routerLink="home" routerLinkActive="active">Farm Supply Home</a></li>
-          <li><a *ngIf="!products" routerLink="products" routerLinkActive="active">Our Products</a></li>
-          <li><a *ngIf="products" routerLink="search" routerLinkActive="active">Our Products</a></li>
+          <li><a *ngIf="products" routerLink="products" routerLinkActive="active">Our Products</a></li>
+          <li><a *ngIf="!products" routerLink="search" routerLinkActive="active">Our Products</a></li>
           <li class="center"><img alt="Birds Creek Farm Supply Logo" src="{{logo}}"></li>
           <li><a routerLink="about" routerLinkActive="active">About Us</a></li>
           <li id="right"><a routerLink="contact" routerLinkActive="active">Contact Us</a></li>
@@ -24,8 +24,8 @@
     <nav [ngClass]="{show: menuToggle, hide: !menuToggle}">
         <ul>
           <a routerLink="home" routerLinkActive="active"><li>Farm Supply Home</li></a>
-          <a *ngIf="!products" routerLink="products" routerLinkActive="active"><li>Our Products</li></a>
-          <a *ngIf="products" routerLink="search" routerLinkActive="active"><li>Our Products</li></a>
+          <a *ngIf="products" routerLink="products" routerLinkActive="active"><li>Our Products</li></a>
+          <a *ngIf="!products" routerLink="search" routerLinkActive="active"><li>Our Products</li></a>
           <a routerLink="about" routerLinkActive="active"><li>About Us</li></a>
           <a routerLink="contact" routerLinkActive="active"><li>Contact Us</li></a>
         </ul>

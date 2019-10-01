@@ -13,7 +13,7 @@ export class AdminpromotionsComponent implements OnInit {
   pellets = '/assets/img/pellets.jpg';
   summerfootwear = '/assets/img/summerfootware.jpg';
   winterfootwear = '/assets/img/winterboots.png';
-  database="http://localhost:4000/api/"
+  database;
   promotions = [
     {"name":"spring","image": this.chicks, "selected": ""},
     {"name":"summer","image": this.summerfootwear, "selected": ""},
@@ -23,6 +23,13 @@ export class AdminpromotionsComponent implements OnInit {
   currentPromotion = this.promotions[0];
   selected = this.promotions[0];
   ngOnInit() {
+    this.http.get('/assets/appConfig.json').subscribe(config => {
+      this.database = config['database'];
+      this.AppConfiguration();
+    });
+  }
+
+  AppConfiguration(){
     this.http.get(this.database+"getpromotions")
     .subscribe(
       res => {
@@ -44,6 +51,7 @@ export class AdminpromotionsComponent implements OnInit {
       }
     );
   }
+
   selectPromotion(promotion)
   {
     console.log(promotion);

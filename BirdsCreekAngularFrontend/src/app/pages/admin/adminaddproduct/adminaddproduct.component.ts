@@ -22,8 +22,9 @@ export class AdminaddproductComponent implements OnInit {
   subtitleerror=false;
   descriptionerror=false;
   selectedFile: File = null;
-  imageDatabase="http://localhost:4000/api/imageserver/upload";
-  database="http://localhost:4000/api/"
+  imageDatabase="imageserver/upload";
+  database;
+  imageDatastore;
 
   constructor(private http: HttpClient){
   }
@@ -65,7 +66,11 @@ export class AdminaddproductComponent implements OnInit {
     return data;
   }
   ngOnInit() {
-    this.collectData();
+    this.http.get('/assets/appConfig.json').subscribe(config => {
+      this.database = config['database'];
+      this.imageDatastore = config['imageDatastore'];
+      this.collectData();
+    });
   }
 
   imageUpload(event)
@@ -85,7 +90,7 @@ export class AdminaddproductComponent implements OnInit {
       if(this.oldimage)
         fd.append('oldimage',this.oldimage);
         
-      this.http.post(this.imageDatabase, fd)
+      this.http.post(this.database+this.imageDatabase, fd)
           .subscribe(res => {
             console.group('Upload Information');
               console.log(res);
@@ -93,7 +98,7 @@ export class AdminaddproductComponent implements OnInit {
             this.uploading = false;
             this.uploaded = true;
             console.log(res['image']);
-            this.imageupload = 'http://localhost:4000'+ res['image'];
+            this.imageupload = this.imageDatastore+ res['image'];
             this.imageerror=false;
             this.oldimage = res['filename'];
           });

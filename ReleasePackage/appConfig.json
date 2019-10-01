@@ -1,0 +1,5 @@
+{
+    "mailer": "https://mailer.birdscreekfarmsupply.ca/mail",
+    "database": "https://backend.birdscreekfarmsupply.ca/api",
+    "imageDatastore": "https://backend.birdscreekfarmsupply.ca"
+}

@@ -14,12 +14,11 @@ export class CarouselComponent implements OnInit {
   slide = {id:1,imageSource: '/assets/img/chick.jpg', slideTitle: "Chicks Here Now", slideText:"We don't want to ruffle any feathers, but it's time to order your", buttonText: "Chicks!", link: "chicks"};
   slideTimeout;
   testBrowser: boolean;
-  database="http://localhost:4000/api/"
+  database;
 
   constructor(@Inject(PLATFORM_ID) platformId: string, private http: HttpClient) {
       this.testBrowser = isPlatformBrowser(platformId);
       if (this.testBrowser) {
-        console.log('settingTimeout');
         this.slideTimeout = setTimeout(() => this.slideMove(), 14000);
       }
     }
@@ -78,6 +77,14 @@ export class CarouselComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.http.get('/assets/appConfig.json').subscribe(config => {
+      this.database = config['database'];
+      console.log(this.database);
+      this.AppConfiguration();
+    });
+
+  }
+  AppConfiguration(){
     this.http.get(this.database+"getpromotions")
     .subscribe(
       res => {
@@ -87,5 +94,4 @@ export class CarouselComponent implements OnInit {
       }
     );
   }
-
 }
