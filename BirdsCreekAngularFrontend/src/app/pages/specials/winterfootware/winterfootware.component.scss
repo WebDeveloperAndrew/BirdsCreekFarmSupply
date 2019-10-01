@@ -1,0 +1,72 @@
+@import "src/sass/variables";
+.container-fluid
+{
+    margin-top:50px;
+}
+.title{
+    margin-bottom:30px;
+}
+h3{
+    margin-top:10px;
+}
+button{
+    margin-bottom: 30px;
+}
+
+p{
+    font-weight:600;
+}
+.btn-document{
+    margin-top: 10px;
+    background-color: transparent;
+    border-color: $primaryAccent;
+    border-width: 3px;
+    font-weight:bold;
+    color: $primaryAccent;
+    -webkit-transition: padding 1s,  border-color 1s, background-color 1s; /* Safari */
+    transition: padding 1s,  border-color 1s, background-color 1s;
+}
+.btn-document:hover{
+    padding: 6px 34px 6px 34px;
+    border-color: transparent;
+    background-color: $carouselText;
+}
+
+.btn-document:active {
+    outline:none;
+    box-shadow: none;
+}
+.btn-document:focus {
+    outline:none;
+    box-shadow: none;
+}
+
+.calltoaction{
+    color: $secondaryText;
+    background-color: $secondaryBackground;
+    border: 1px solid;
+    border-color: $primaryAccent;
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    -webkit-box-shadow: inset 0px 0px 86px -7px $secondaryBorder;
+    -moz-box-shadow: inset 0px 0px 86px -7px $secondaryBorder;
+    box-shadow: inset 0px 0px 86px -7px $secondaryBorder;
+}
+.btn-calltoaction{
+    margin-top: 10px;
+    background-color: transparent;
+    font-size:20px;
+    font-weight:bold;
+    border-color: $secondaryText;
+    border-width: 3px;
+    color: $secondaryText;
+    -webkit-transition: padding 1s,  border-color 1s, background-color 1s; /* Safari */
+    transition: padding 1s,  border-color 1s, background-color 1s;
+}
+.btn-calltoaction:hover{
+    padding: 6px 24px 6px 24px;
+    border-color: transparent;
+    background-color: $secondaryAccent;
+}

@@ -1,0 +1,25 @@
+\BirdsCreekAngularFrontend: ng build --baseHref="https://birdscreekfarmsupply.ca" --prod=true
+
+Copy contents of \BirdsCreekAngularFrontend\dist
+Paste to \BirdsCreekAngularFrontend\dist into ReleasePackage\nodefrontend\website\
+Copy \ReleasePackage\appconfig.json 
+Paste to \ReleasePackage\nodefrontend\website\assets\
+
+\ReleasePackage\nodefrontend: docker build . -t "webdeveloperandrew/bcfarmsupplywebsite"
+\ReleasePackage\nodefrontend: docker push webdeveloperandrew/bcfarmsupplywebsite:latest
+
+\BirdsCreekNodeBackend: docker build . -t "webdeveloperandrew/bcfarmsupplybackend"
+\BirdsCreekNodeBackend: docker push webdeveloperandrew/bcfarmsupplybackend:latest
+
+login to web server
+ip:144.217.85.197
+login: root
+password: Standard long version capitalized first character password
+
+cd birdscreekfarmsupply/birdscreeknew
+docker-compose down
+docker-compose build
+docker volume prune
+docker-compose up
+
+test it.

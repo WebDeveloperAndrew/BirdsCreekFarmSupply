@@ -30,7 +30,7 @@ export class AdminpromotionsComponent implements OnInit {
   }
 
   AppConfiguration(){
-    this.http.get(this.database+"getpromotions")
+    this.http.get(this.database+"/getpromotions")
     .subscribe(
       res => {
         console.log(res);
@@ -71,7 +71,7 @@ export class AdminpromotionsComponent implements OnInit {
       })
     };
     this.currentPromotion = this.selected;
-    const req = this.http.post(this.database + "setpromotion", JSON.stringify({"promotion":this.selected.name}), httpOptions)
+    const req = this.http.post(this.database + "/setpromotion", JSON.stringify({"promotion":this.selected.name}), httpOptions)
         .subscribe(
           res => {
             console.log(res);

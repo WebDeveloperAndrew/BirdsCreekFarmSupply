@@ -57,8 +57,8 @@ export class CarouselComponent implements OnInit {
     console.log(promotion);
     if (promotion === "summer")
     {
-      this.slides[0] = {id:1,imageSource: '/assets/img/summerfootware.jpg', slideTitle: "Summer Footware", slideText:"Protect your feet with our wide selection of", buttonText: "Work Boots", link: "summerfootware"};
-      this.slide = {id:1,imageSource: '/assets/img/summerfootware.jpg', slideTitle: "Summer Footware", slideText:"Protect your feet this work season with our wide selection of", buttonText: "Work Boots!", link: "summerfootware"};
+      this.slides[0] = {id:1,imageSource: '/assets/img/summerfootwarefront.jpg', slideTitle: "Summer Footware", slideText:"Protect your feet with our wide selection of", buttonText: "Work Boots", link: "summerfootware"};
+      this.slide = {id:1,imageSource: '/assets/img/summerfootwarefront.jpg', slideTitle: "Summer Footware", slideText:"Protect your feet this work season with our wide selection of", buttonText: "Work Boots!", link: "summerfootware"};
     }
     else if (promotion === "autumn")
     {
@@ -67,8 +67,8 @@ export class CarouselComponent implements OnInit {
     }
     else if (promotion === "winter")
     {
-      this.slides[0] = {id:1,imageSource: '/assets/img/winterboots.png', slideTitle: "Winter Footware", slideText:"Protect your feet this winter with our wide selection of", buttonText: "Winter Boots!", link: "winterfootware"};
-      this.slide = {id:1,imageSource: '/assets/img/winterboots.png', slideTitle: "Winter Footware", slideText:"Protect your feet this winter with our wide selection of", buttonText: "Winter Boots!", link: "winterfootware"};
+      this.slides[0] = {id:1,imageSource: '/assets/img/winterfootwarefront.jpg', slideTitle: "Winter Footware", slideText:"Protect your feet this winter with our wide selection of", buttonText: "Winter Boots!", link: "winterfootware"};
+      this.slide = {id:1,imageSource: '/assets/img/winterfootwarefront.jpg', slideTitle: "Winter Footware", slideText:"Protect your feet this winter with our wide selection of", buttonText: "Winter Boots!", link: "winterfootware"};
     }
     else
     {

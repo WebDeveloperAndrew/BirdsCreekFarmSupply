@@ -11,7 +11,7 @@ export class ChickspageComponent implements OnInit {
   constructor(private seo: SeoService) { }
   title = "Poultry Pricing and Delivery Schedules";
   subtitle = "Chicks, Turkeys, Ducks, Pheasants";
-  chicks = '/assets/img/chicks.jpg';
+  mainimage = '/assets/img/chicks.jpg';
   price = '/assets/files/2019-Delivery-Schedule.pdf';
   delivery = '/assets/img/delivery.jpg';
   schedule = '/assets/files/2019-Delivery-Schedule.pdf';
