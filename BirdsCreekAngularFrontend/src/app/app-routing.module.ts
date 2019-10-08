@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { AboutpageComponent } from './pages/aboutpage/aboutpage.component';
 import { ContactpageComponent } from './pages/contactpage/contactpage.component';
@@ -20,6 +20,8 @@ import { AdminaddbrandComponent } from './pages/admin/adminaddbrand/adminaddbran
 import { AdmineditbrandComponent } from './pages/admin/admineditbrand/admineditbrand.component';
 import { AdminaddproductComponent } from './pages/admin/adminaddproduct/adminaddproduct.component';
 import { AdmineditproductComponent } from './pages/admin/admineditproduct/admineditproduct.component';
+import { AuthGuardService } from './auth-guard.service';
+import { ReverseAuthGuardService } from './reverse-auth-guard.service';
 const appRoutes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomepageComponent },
@@ -42,22 +44,18 @@ const appRoutes: Routes = [
     { path: 'quality-trailers-and-docks', redirectTo: '/products', pathMatch: 'full'},
     { path: 'contact-us', redirectTo: '/contact', pathMatch: 'full'},
     //ADMIN PATHS
-    { path: 'admin/login', component: AdminloginComponent },
-    { path: 'admin/home', component: AdminhomeComponent },
-    { path: 'admin/products', component: AdminproductsComponent },
-    { path: 'admin/addproduct', component: AdminaddproductComponent },
-    { path: 'admin/editproduct/:productid', component: AdmineditproductComponent },
-    { path: 'admin/brands', component: AdminbrandsComponent },
-    { path: 'admin/addbrand', component: AdminaddbrandComponent },
-    { path: 'admin/editbrand/:brandname', component: AdmineditbrandComponent },
-    { path: 'admin/promotions', component: AdminpromotionsComponent },
-    { path: 'admin/editproduct', component: AdminpromotionsComponent },
-    /*
-    { path: 'admin/home', redirectTo: 'admin/login/:home', pathMatch: 'full'},
-    { path: 'admin/products', redirectTo: 'admin/login/:products', pathMatch: 'full' },
-    { path: 'admin/brands', redirectTo: 'admin/login/:brands', pathMatch: 'full' },
-    { path: 'admin/promotions', redirectTo: 'admin/login/:home', pathMatch: 'full'},
-    */
+    { path: 'admin/login', canActivate: [ReverseAuthGuardService],component: AdminloginComponent },
+    { path: 'admin/home',canActivate: [AuthGuardService], component: AdminhomeComponent },
+    { path: 'admin/products',canActivate: [AuthGuardService], component: AdminproductsComponent },
+    { path: 'admin/addproduct',canActivate: [AuthGuardService], component: AdminaddproductComponent },
+    { path: 'admin/editproduct/:productid',canActivate: [AuthGuardService], component: AdmineditproductComponent },
+    { path: 'admin/brands',canActivate: [AuthGuardService], component: AdminbrandsComponent },
+    { path: 'admin/addbrand',canActivate: [AuthGuardService], component: AdminaddbrandComponent },
+    { path: 'admin/editbrand/:brandname',canActivate: [AuthGuardService], component: AdmineditbrandComponent },
+    { path: 'admin/promotions',canActivate: [AuthGuardService], component: AdminpromotionsComponent },
+    { path: 'admin/editproduct',canActivate: [AuthGuardService], component: AdminpromotionsComponent },
+    { path: 'admin', children:[{path:"",redirectTo: '/admin/login',pathMatch: 'full'},{path:"**",redirectTo: '/admin/login',pathMatch: 'full'}]},
+    { path: 'login', redirectTo: '/admin/login', pathMatch: 'full'},
     //404 Catch all
     { path: '404', component: NotfoundComponent},
     { path: '**', redirectTo: '/404',pathMatch:'full'},

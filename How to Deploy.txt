@@ -18,8 +18,7 @@ password: Standard long version capitalized first character password
 
 cd birdscreekfarmsupply/birdscreeknew
 docker-compose down
-docker-compose build
 docker volume prune
-docker-compose up
+bash restartdocker.sh
 
 test it.

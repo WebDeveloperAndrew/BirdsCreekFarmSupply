@@ -34,6 +34,10 @@ import { BrandresultComponent } from './components/brandresult/brandresult.compo
 import { WoodpelletsComponent } from './pages/specials/woodpellets/woodpellets.component';
 import { SummerfootwareComponent } from './pages/specials/summerfootware/summerfootware.component';
 import { WinterfootwareComponent } from './pages/specials/winterfootware/winterfootware.component';
+import { AuthGuardService } from './auth-guard.service';
+import { AuthService } from './auth.service';
+import { ReverseAuthGuardService } from './reverse-auth-guard.service';
+import { DatabaseService } from './database.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +77,7 @@ import { WinterfootwareComponent } from './pages/specials/winterfootware/winterf
     FontAwesomeModule,
     HttpClientModule
   ],
-  providers: [SeoService],
+  providers: [AuthGuardService, AuthService,ReverseAuthGuardService, SeoService,DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

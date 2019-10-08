@@ -62,8 +62,8 @@ export class CarouselComponent implements OnInit {
     }
     else if (promotion === "autumn")
     {
-      this.slides[0] = {id:1,imageSource: '/assets/img/pellets.jpg', slideTitle: "Pellets On Sale", slideText:"Don't be caught in the cold this winter, heat your home with our selection of", buttonText: "Wood Pellets!", link: "woodpellets"};
-      this.slide =  {id:1,imageSource: '/assets/img/pellets.jpg', slideTitle: "Pellets On Sale", slideText:"Don't be caught in the cold this winter, heat your home with our selection of", buttonText: "Wood Pellets!", link: "woodpellets"};
+      this.slides[0] = {id:1,imageSource: '/assets/img/pellets.jpg', slideTitle: "Wood Pellets For Sale", slideText:"Don't be caught in the cold this winter, heat your home with our selection of", buttonText: "Wood Pellets!", link: "woodpellets"};
+      this.slide =  {id:1,imageSource: '/assets/img/pellets.jpg', slideTitle: "Wood Pellets For Sale", slideText:"Don't be caught in the cold this winter, heat your home with our selection of", buttonText: "Wood Pellets!", link: "woodpellets"};
     }
     else if (promotion === "winter")
     {

@@ -9,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class NotfoundComponent implements OnInit {
 
   public sadpup = "/assets/img/sad_puppy.jpg";
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    setTimeout((router: Router) => {
-      router.navigate(['home']);
+    setTimeout(() => {
+      this.router.navigate(['home']);
   }, 5000);  //5s
   }
 

@@ -10,9 +10,9 @@ export class AdminpromotionsComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
   chicks = '/assets/img/chickspromo.jpg';
-  pellets = '/assets/img/pellets.jpg';
+  pellets = '/assets/img/pellets2.jpg';
   summerfootwear = '/assets/img/summerfootware.jpg';
-  winterfootwear = '/assets/img/winterboots.png';
+  winterfootwear = '/assets/img/winterfootware.png';
   database;
   promotions = [
     {"name":"spring","image": this.chicks, "selected": ""},
@@ -30,7 +30,7 @@ export class AdminpromotionsComponent implements OnInit {
   }
 
   AppConfiguration(){
-    this.http.get(this.database+"/getpromotions")
+    this.http.get(this.database+"getpromotions")
     .subscribe(
       res => {
         console.log(res);
@@ -71,7 +71,7 @@ export class AdminpromotionsComponent implements OnInit {
       })
     };
     this.currentPromotion = this.selected;
-    const req = this.http.post(this.database + "/setpromotion", JSON.stringify({"promotion":this.selected.name}), httpOptions)
+    const req = this.http.post(this.database + "setpromotion", JSON.stringify({"promotion":this.selected.name}), httpOptions)
         .subscribe(
           res => {
             console.log(res);

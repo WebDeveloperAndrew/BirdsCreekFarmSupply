@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adminlogin',
@@ -16,7 +17,7 @@ export class AdminloginComponent implements OnInit {
   passwordlengtherror=false;
   loginServer;
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router,private http: HttpClient) { }
 
   ngOnInit() {
     this.http.get('/assets/appConfig.json').subscribe(config => {
@@ -32,23 +33,24 @@ export class AdminloginComponent implements OnInit {
     if(login.value.login != "" && login.value.password != "" && login.value.password.length >= 8)
     {
       console.log(login.value.password.length);
+      event.preventDefault();
+      this.loginerror=false;
+      this.passworderror=false;
+      this.passwordlengtherror=false;
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type':  'application/json'
         })
       };
-      event.preventDefault();
-      this.loginerror=false;
-      this.passworderror=false;
-      this.passwordlengtherror=false;
-      this.http.post(this.loginServer+"login", JSON.stringify({"login": login.value.login, "password": login.value.password}), httpOptions)
+      const req = this.http.post(this.loginServer + "login", JSON.stringify({"login": login.value.login, "password": login.value.password}), httpOptions)
       .subscribe(
         res => {
           console.log(res);
           login.form.reset();
-          if(true == true)
+          if(res['Status'] == "Login Successful")
           {
-            this.loginsuccessful=true;
+            localStorage.setItem('access_token',res['JWT']);
+            this.router.navigate(['/admin/home']);
           }
           else
           {

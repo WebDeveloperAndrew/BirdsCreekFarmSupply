@@ -9,12 +9,12 @@ import { SeoService } from '../../../seo.service';
 export class WoodpelletsComponent implements OnInit {
 
   constructor(private seo: SeoService) { }
-  title = "Woodpellets";
+  title = "Wood Pellets";
   subtitle = "Don't be caught in the cold this winter, heat your home with our selection of wood pellets for all your heating season needs. Softwood, Hardwood, and Blended pellets are all avaliable now!";
   mainimage = '/assets/img/pellets2.jpg';
   ngOnInit() {
     this.seo.generateTags({
-      title: 'Woodpellets Page',
+      title: 'Wood Pellets Page',
       description: "Don't be caught in the cold this winter, heat your home with our selection of wood pellets for all your heating season needs. Softwood, Hardwood, and Blended pellets are all avaliable now!",
       image: 'assets/img/pellets2.jpg',
       slug: 'pellets'

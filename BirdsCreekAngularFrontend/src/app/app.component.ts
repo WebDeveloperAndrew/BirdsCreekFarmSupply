@@ -18,9 +18,9 @@ export class AppComponent {
           console.log('Admin Mode is active');
           this.admin = true;
         }
-        
       }
     });
+
   }
   ngOnInit()
   {

@@ -1,6 +1,5 @@
 'use strict';
 const nodemailer = require('nodemailer');
-
 const gmailEmail = process.env.GMAILLOGIN;
 const recipient = process.env.EMAIL;
 const clientId = process.env.CLIENTID;

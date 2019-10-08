@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 services:
   app:
     container_name: BirdsCreekBackend
@@ -12,8 +12,10 @@ services:
     depends_on:
       - mongo
     volumes:
-      - .images:/images
-      - .settings:/settings
+      - images:/app/images
+      - settings:/settings
+    environment:
+      - SECRET=4325431513461361324531425234asdfgfdfsg344tfg34tdfsbvsdfga
   mongo:
     container_name: BirdsCreekMongoDB
     image: mongo

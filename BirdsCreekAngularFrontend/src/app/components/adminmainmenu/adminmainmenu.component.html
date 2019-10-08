@@ -1,6 +1,9 @@
 <div id="headerElement">
     <div class="headerp">
       <div class="container-fluid largescreen">
+        <div [ngClass]="{show: logout, hide: !logout}" class="button-wrapper">
+          <button class="btn btn-calltoaction">Log Out</button>
+        </div>
         <nav>
           <ul>
             <li class="left"><a routerLink="admin/home" routerLinkActive="active">Control Panel</a></li>
@@ -22,10 +25,10 @@
     <div class="container-fluid smallscreen">
       <nav [ngClass]="{show: menuToggle, hide: !menuToggle}">
           <ul>
-            <a routerLink="home" routerLinkActive="active"><li>Farm Supply Home</li></a>
-            <a routerLink="products" routerLinkActive="active"><li>Our Products</li></a>
-            <a routerLink="about" routerLinkActive="active"><li>About Us</li></a>
-            <a routerLink="contact" routerLinkActive="active"><li>Contact Us</li></a>
+            <a routerLink="admin/home" routerLinkActive="active"><li>Control Panel</li></a>
+            <a routerLink="admin/products" routerLinkActive="active"><li>Products</li></a>
+            <a routerLink="admin/brands" routerLinkActive="active"><li>Brands</li></a>
+            <a routerLink="admin/promotions" routerLinkActive="active"><li>Promotions</li></a>
           </ul>
         </nav>
     </div>

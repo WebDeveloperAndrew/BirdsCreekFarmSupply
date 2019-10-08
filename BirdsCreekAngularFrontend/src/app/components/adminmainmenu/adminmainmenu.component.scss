@@ -132,7 +132,37 @@ body {
     }
   }
 }
+.button-wrapper{
+  float: right;
+  width: 200px;
+  margin-left: -200px;
+  text-align:center;
+}
+.btn-calltoaction{
+  margin-top: 10px;
+  background-color: $secondaryText;
+  border-color: #7C8B5A;
+  border-width: 3px;
+  font-weight:bold;
+  color: #7C8B5A;
+  -webkit-transition: padding 1s,  border-color 1s, background-color 1s; /* Safari */
+  transition: padding 1s,  border-color 1s, background-color 1s;
+}
+.btn-calltoaction:hover{
+  padding: 6px 34px 6px 34px;
+  border-color: transparent;
+  background-color: $secondaryText;
+  color: #7C8B5A;
+}
 
+.btn-calltoaction:active {
+  outline:none;
+  box-shadow: none;
+}
+.btn-calltoaction:focus {
+  outline:none;
+  box-shadow: none;
+}
 .smallscreen
 {
   nav a {
