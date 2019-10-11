@@ -29,7 +29,6 @@ export class AuthGuardService implements CanActivate {
                     console.log("go to login page");
                     // If not, they redirect them to the login page
                     this.router.navigate(['/admin/login']);
-                    localStorage.removeItem('access_token');
                     return false;
                 }
             });

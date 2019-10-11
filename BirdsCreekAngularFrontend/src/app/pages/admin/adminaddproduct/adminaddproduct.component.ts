@@ -33,7 +33,8 @@ export class AdminaddproductComponent implements OnInit {
   {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem('access_token')
       })
     };
     this.http.post(this.database+"searchbrand", JSON.stringify({"query":""}), httpOptions)
@@ -82,7 +83,8 @@ export class AdminaddproductComponent implements OnInit {
 
       const httpOptions = {
         headers: new HttpHeaders({
-          'content-Type':  'multipart/form-data'
+          'content-Type':  'multipart/form-data',
+          'Authorization': 'Bearer '+ localStorage.getItem('access_token')
         })
       };
       const fd = new FormData();
@@ -114,7 +116,8 @@ export class AdminaddproductComponent implements OnInit {
     {
       const httpOptions = {
         headers: new HttpHeaders({
-          'Content-Type':  'application/json'
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer '+ localStorage.getItem('access_token')
         })
       };
       event.preventDefault();

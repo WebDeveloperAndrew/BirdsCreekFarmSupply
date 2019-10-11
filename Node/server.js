@@ -4,7 +4,7 @@ var app = express();
 var mongo = require('mongodb');
 var databaseApi = require('./app/databaseApi.js');
 var imageServer = require('./app/imageServer.js');
-var loginApi = require('./app/loginApi.js');
+//var loginApi = require('./app/loginApi.js');
 var dburl = process.env.MONGO_URI;
 
 app.use(function(req, res, next) {
@@ -30,7 +30,7 @@ mongo.MongoClient.connect(dburl,{ useNewUrlParser: true, reconnectTries: 60, rec
       });
 
       databaseApi(app);
-      loginApi(app,express);
+     // loginApi(app,express);
       imageServer(app, express, db);
       
       var port = process.env.PORT || 8080;

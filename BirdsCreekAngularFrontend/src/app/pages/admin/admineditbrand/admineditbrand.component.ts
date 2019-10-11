@@ -52,7 +52,8 @@ export class AdmineditbrandComponent implements OnInit {
   {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem('access_token')
       })
     };
     this.http.post(this.database+"deletebrand", JSON.stringify({"name":this.namex}), httpOptions)
@@ -75,7 +76,8 @@ export class AdmineditbrandComponent implements OnInit {
     console.log(brandname);
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem('access_token')
       })
     };
     console.log(JSON.stringify({"name":brandname}));
@@ -103,7 +105,8 @@ export class AdmineditbrandComponent implements OnInit {
 
       const httpOptions = {
         headers: new HttpHeaders({
-          'content-Type':  'multipart/form-data'
+          'content-Type':  'multipart/form-data',
+          'Authorization': 'Bearer '+ localStorage.getItem('access_token')
         })
       };
       const fd = new FormData();
@@ -140,7 +143,8 @@ export class AdmineditbrandComponent implements OnInit {
     {
       const httpOptions = {
         headers: new HttpHeaders({
-          'Content-Type':  'application/json'
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer '+ localStorage.getItem('access_token')
         })
       };
       event.preventDefault();

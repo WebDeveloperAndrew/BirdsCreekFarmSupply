@@ -11,7 +11,8 @@ export class DatabaseService {
   constructor(private http: HttpClient) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem('access_token')
       })
     };
     this.http.get('/assets/appConfig.json').subscribe((config) => {this.database = config["database"];});

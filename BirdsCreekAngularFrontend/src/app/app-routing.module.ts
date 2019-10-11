@@ -22,6 +22,11 @@ import { AdminaddproductComponent } from './pages/admin/adminaddproduct/adminadd
 import { AdmineditproductComponent } from './pages/admin/admineditproduct/admineditproduct.component';
 import { AuthGuardService } from './auth-guard.service';
 import { ReverseAuthGuardService } from './reverse-auth-guard.service';
+import { AdminsettingsComponent } from './pages/admin/adminsettings/adminsettings.component';
+import { AdminusersComponent } from './pages/admin/adminusers/adminusers.component';
+import { AdminaddusersComponent } from './pages/admin/adminaddusers/adminaddusers.component';
+import { AdmineditusersComponent } from './pages/admin/admineditusers/admineditusers.component';
+
 const appRoutes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomepageComponent },
@@ -54,6 +59,10 @@ const appRoutes: Routes = [
     { path: 'admin/editbrand/:brandname',canActivate: [AuthGuardService], component: AdmineditbrandComponent },
     { path: 'admin/promotions',canActivate: [AuthGuardService], component: AdminpromotionsComponent },
     { path: 'admin/editproduct',canActivate: [AuthGuardService], component: AdminpromotionsComponent },
+    { path: 'admin/settings',canActivate: [AuthGuardService], component: AdminsettingsComponent },
+    { path: 'admin/users',canActivate: [AuthGuardService], component: AdminusersComponent },
+    { path: 'admin/adduser',canActivate: [AuthGuardService], component: AdminaddusersComponent },
+    { path: 'admin/edituser/:username',canActivate: [AuthGuardService], component: AdmineditusersComponent },
     { path: 'admin', children:[{path:"",redirectTo: '/admin/login',pathMatch: 'full'},{path:"**",redirectTo: '/admin/login',pathMatch: 'full'}]},
     { path: 'login', redirectTo: '/admin/login', pathMatch: 'full'},
     //404 Catch all

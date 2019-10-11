@@ -35,7 +35,8 @@ export class AdminhomeComponent implements OnInit {
     console.log('changing settings');
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem('access_token')
       })
     };
     const req = this.http.post(this.database + "sethomesettings", JSON.stringify({"products":this.products}), httpOptions)

@@ -65,9 +65,11 @@ export class AdminpromotionsComponent implements OnInit {
 
   changePromotion()
   {
+    console.log(localStorage.getItem("access_token"));
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem("access_token")
       })
     };
     this.currentPromotion = this.selected;

@@ -1,0 +1,217 @@
+@import "src/sass/variables";
+
+.container{
+    font-family: round, sans-serif;
+    padding-top:50px;
+    font-weight:600;
+}
+h1{
+    margin-bottom:20px;
+}
+
+label{
+    display:none;
+}
+
+#fileupload {
+    width: 0px;
+    height: 0px;
+	opacity: 0;
+	overflow: hidden;
+    z-index: -1;
+
+}
+
+#fileuploadimage{
+    width: 100%;
+
+    border-width: 3px;
+    border-radius : 10px;
+}
+
+.inputfilelabel {
+    margin-top:5px;
+    margin-bottom:10px;
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    display: inline-block;
+}
+
+.btn-calltoaction{
+    margin-top: 10px;
+    background-color: transparent;
+    border-color: $primaryAccent;
+    border-width: 3px;
+    font-weight:bold;
+    color: $primaryAccent;
+    -webkit-transition: padding 1s,  border-color 1s, background-color 1s; /* Safari */
+    transition: padding 1s,  border-color 1s, background-color 1s;
+}
+.btn-calltoaction:hover{
+    padding: 6px 34px 6px 34px;
+    border-color: transparent;
+    background-color: $carouselText;
+}
+
+.btn-calltoaction:active {
+    outline:none;
+    box-shadow: none;
+}
+.btn-calltoaction:focus {
+    outline:none;
+    box-shadow: none;
+}
+
+input, textarea{
+    background-color: $primaryBackground;
+    border-color: $primaryText;
+    font-weight:600;
+    resize: none;
+}
+
+.inputtitle{
+    background-color: $primaryBackground;
+    border-color: $primaryText;
+    font-weight:600;
+    resize: none;
+    color: $primaryAccent;
+    border-color: black;
+    border-width: 1px 0px 1px 1px;
+    border-radius: 4px 0px 0px 4px;
+}
+.inputcurrency{
+    background-color: $primaryBackground;
+    border-color: $primaryText;
+    font-weight:600;
+    resize: none;
+    padding-right: 3px;
+    color: $primaryAccent;
+    border-color: black;
+    border-width: 1px 0px 1px 1px;
+    border-radius: 0px;
+}
+.imageicon{
+    width:16px;
+    height:16px;
+}
+.inputstyle{
+    background-color: $primaryBackground;
+    border-color: $primaryText;
+    font-weight:600;
+    resize: none;
+    
+    color: $primaryAccent;
+    border-color: black;
+    border-width: 1px;
+    padding: 6px 12px 6px 12px;
+    border-radius: 0px 4px 4px 0px;
+}
+.price-control{
+    border-width: 1px 1px 1px 0px;
+    padding-left:0px;
+}
+
+option{
+    border: none;
+    color: $primaryAccent;
+    background-color: $primaryBackground;
+    font-weight:600;
+    padding: 6px 12px 6px 12px;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+option:hover,
+option:focus,
+option:active,
+option:checked {
+    outline:none;
+    box-shadow: none;
+    color: $primaryAccent;
+    background-color: $primaryBackground;
+}
+
+.inputstyle:focus {
+    outline:none;
+    box-shadow: none;
+}
+
+.alert-info{
+    background-color:#467782;
+    border-color:#467782;
+    color: lightgrey;
+}
+
+input::placeholder,textarea::placeholder 
+{ /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $primaryAccent;
+    opacity: 1; /* Firefox */
+}
+
+input::-ms-input-placeholder,textarea::-ms-input-placeholder 
+{ /* Internet Explorer 10-11 */
+    color: $primaryAccent;
+}
+textarea:focus, input:focus {
+    color: #000;
+    background-color:$primaryBackground;
+    border-color: $primaryAccent;
+    box-shadow:none;
+}
+input, select, textarea{
+    color: #000;
+}
+
+iframe{
+    margin-top: 20px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+.errormessage{
+    margin-bottom:0px;
+}
+.form-control.ng-touched.ng-invalid {
+    border: 2px solid #7F0000;
+}
+.forminvalid {
+    border: 2px solid #7F0000;
+}
+.warning{
+    color:sienna;
+}
+.alert-danger
+{
+    background-color:#7F0000;
+    border-color: #7F0000;
+    color: lightgrey;
+}
+
+@media only screen and (max-width: $small-display) {
+    .alert{
+        text-align: center;
+    }
+    button{
+        margin-right:auto;
+        margin-left:auto;
+        width: 60%;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    form{
+        text-align: center;
+        font-size:20px;
+    }
+    h3{
+        text-align: center;
+    }
+    p{
+        text-align: center;
+    }
+    iframe{
+        width:100%;
+        height:calc(width*1.5);
+    }
+}

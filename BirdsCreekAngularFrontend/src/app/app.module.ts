@@ -1,3 +1,4 @@
+import { LoginService } from './login.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -38,6 +39,11 @@ import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { ReverseAuthGuardService } from './reverse-auth-guard.service';
 import { DatabaseService } from './database.service';
+import { AdminsettingsComponent } from './pages/admin/adminsettings/adminsettings.component';
+import { AdminusersComponent } from './pages/admin/adminusers/adminusers.component';
+import { AdminaddusersComponent } from './pages/admin/adminaddusers/adminaddusers.component';
+import { AdmineditusersComponent } from './pages/admin/admineditusers/admineditusers.component';
+import { UserresultComponent } from './components/userresult/userresult.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +74,12 @@ import { DatabaseService } from './database.service';
     BrandresultComponent,
     WoodpelletsComponent,
     SummerfootwareComponent,
-    WinterfootwareComponent
+    WinterfootwareComponent,
+    AdminsettingsComponent,
+    AdminusersComponent,
+    AdminaddusersComponent,
+    AdmineditusersComponent,
+    UserresultComponent
   ],
   imports: [
     AppRoutingModule,
@@ -77,7 +88,7 @@ import { DatabaseService } from './database.service';
     FontAwesomeModule,
     HttpClientModule
   ],
-  providers: [AuthGuardService, AuthService,ReverseAuthGuardService, SeoService,DatabaseService],
+  providers: [AuthGuardService, AuthService,ReverseAuthGuardService, SeoService,DatabaseService,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

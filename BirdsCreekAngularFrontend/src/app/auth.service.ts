@@ -20,7 +20,8 @@ export class AuthService {
   // check if token is set, then...
   const httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type':  'application/json',
+      'Authorization': 'Bearer '+ localStorage.getItem('access_token')
     })
   };
   //setting promise

@@ -1,3 +1,4 @@
+import { LoginService } from './../../../login.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -17,7 +18,7 @@ export class AdminloginComponent implements OnInit {
   passwordlengtherror=false;
   loginServer;
 
-  constructor(private router: Router,private http: HttpClient) { }
+  constructor(private router: Router,private http: HttpClient, private loginService: LoginService) { }
 
   ngOnInit() {
     this.http.get('/assets/appConfig.json').subscribe(config => {
@@ -49,7 +50,8 @@ export class AdminloginComponent implements OnInit {
           login.form.reset();
           if(res['Status'] == "Login Successful")
           {
-            localStorage.setItem('access_token',res['JWT']);
+            localStorage.setItem('access_token', res['JWT']);
+            this.loginService.setLogin();
             this.router.navigate(['/admin/home']);
           }
           else

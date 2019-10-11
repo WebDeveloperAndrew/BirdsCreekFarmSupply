@@ -2,7 +2,7 @@
     <div class="headerp">
       <div class="container-fluid largescreen">
         <div [ngClass]="{show: logout, hide: !logout}" class="button-wrapper">
-          <button class="btn btn-calltoaction">Log Out</button>
+          <p class="namep">Welcome {{firstname}}</p><div [ngClass]="{show: admin, hide: !admin}"><button routerLink="admin/users" class="btn btn-calltoaction">Users</button><p></p><button routerLink="admin/settings" class="btn btn-calltoaction">Settings</button><p></p></div><button (click)="adminLogout()" class="btn btn-calltoaction">Log Out</button>
         </div>
         <nav>
           <ul>

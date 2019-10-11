@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
-  selector: 'app-adminbrands',
-  templateUrl: './adminbrands.component.html',
-  styleUrls: ['./adminbrands.component.scss']
+  selector: 'app-adminusers',
+  templateUrl: './adminusers.component.html',
+  styleUrls: ['./adminusers.component.scss']
 })
-export class AdminbrandsComponent implements OnInit {
+export class AdminusersComponent implements OnInit {
 
   displayData= [];
   searchParam;
@@ -24,7 +24,7 @@ export class AdminbrandsComponent implements OnInit {
         'Authorization': 'Bearer '+ localStorage.getItem('access_token')
       })
     };
-    this.http.post(this.database+"searchbrand", JSON.stringify({"query":this.searchParam}), httpOptions)
+    this.http.post(this.database+"searchuser", JSON.stringify({"query":this.searchParam}), httpOptions)
         .subscribe(
           res => {
             this.displayData = this.convertToData(res);
@@ -44,7 +44,7 @@ export class AdminbrandsComponent implements OnInit {
         'Authorization': 'Bearer '+ localStorage.getItem('access_token')
       })
     };
-    this.http.post(this.database+"searchbrand", JSON.stringify({"query":""}), httpOptions)
+    this.http.post(this.database+"searchuser", JSON.stringify({"query":""}), httpOptions)
         .subscribe(
           res => {
             this.displayData = this.convertToData(res);

@@ -58,7 +58,8 @@ export class AdmineditproductComponent implements OnInit {
   {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem('access_token')
       })
     };
     this.http.post(this.database+"searchbrand", JSON.stringify({"query":""}), httpOptions)
@@ -95,7 +96,8 @@ export class AdmineditproductComponent implements OnInit {
   {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem('access_token')
       })
     };
     this.http.post(this.database+"deleteproduct", JSON.stringify({"id":this.id,"title":this.titlex}), httpOptions)
@@ -127,7 +129,8 @@ export class AdmineditproductComponent implements OnInit {
     console.log(id);
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem('access_token')
       })
     };
     this.http.post(this.database+"getproduct", JSON.stringify({"id":id}), httpOptions)
@@ -153,7 +156,8 @@ export class AdmineditproductComponent implements OnInit {
 
       const httpOptions = {
         headers: new HttpHeaders({
-          'content-Type':  'multipart/form-data'
+          'content-Type':  'multipart/form-data',
+          'Authorization': 'Bearer '+ localStorage.getItem('access_token')
         })
       };
       const fd = new FormData();
@@ -184,7 +188,8 @@ export class AdmineditproductComponent implements OnInit {
     {
       const httpOptions = {
         headers: new HttpHeaders({
-          'Content-Type':  'application/json'
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer '+ localStorage.getItem('access_token')
         })
       };
       event.preventDefault();

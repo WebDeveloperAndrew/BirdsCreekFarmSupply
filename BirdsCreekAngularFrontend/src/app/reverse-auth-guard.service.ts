@@ -22,7 +22,6 @@ export class ReverseAuthGuardService implements CanActivate {
                 }
                 else
                 {
-                    localStorage.removeItem('access_token');
                     return true;
                 }
             });

@@ -25,7 +25,8 @@ export class AdminproductsComponent implements OnInit {
   {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem('access_token')
       })
     };
     this.http.post(this.database+"searchproduct", JSON.stringify({"query":this.searchParam}), httpOptions)
@@ -44,7 +45,8 @@ export class AdminproductsComponent implements OnInit {
   {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem('access_token')
       })
     };
     this.http.post(this.database+"searchproduct", JSON.stringify({"query":""}), httpOptions)

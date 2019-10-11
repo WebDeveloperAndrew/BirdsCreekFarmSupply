@@ -1,0 +1,39 @@
+@import "src/sass/variables";
+.container
+{
+    margin-top:20px;
+    margin-bottom: 20px;
+    font-family: round, sans-serif;
+    border-style:round;
+    border-radius: 40px;
+    background-color: #563003;
+    -webkit-box-shadow: inset 0px 0px 86px -7px $secondaryBorder;
+    -moz-box-shadow: inset 0px 0px 86px -7px $secondaryBorder;
+    box-shadow: inset 0px 0px 86px -7px $secondaryBorder;
+}
+.col-lg-10{
+    padding: 0px;
+}
+.col-sm-1{
+    padding:0px;
+}
+img{
+    margin-top:10px;
+    margin-bottom:20px;
+}
+h1{
+    font-size:1.4vw;
+    margin-top:20px;
+    color: #d07d1e;
+    text-shadow: 3px 3px 20px black;
+}
+h2{
+    font-size:1vw;
+    margin-top:5px;
+    color: $carouselText;
+    text-shadow: 3px 3px 20px black;
+}
+button{
+    margin-bottom: 30px;
+}
+
